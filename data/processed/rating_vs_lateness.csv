@@ -1,0 +1,11 @@
+lateness,has_missing_items,rated_orders,avg_rating,bad_rating_pct
+1. On time,False,41389,4.71,0.0
+1. On time,True,3735,3.9,0.2
+2. Late 0-3 min,False,8666,3.41,2.4
+2. Late 0-3 min,True,801,2.59,41.3
+3. Late 3-6 min,False,2910,3.19,5.8
+3. Late 3-6 min,True,269,2.36,62.5
+4. Late 6-10 min,False,1448,2.97,15.7
+4. Late 6-10 min,True,140,2.09,78.6
+5. Late 10+ min,False,1061,2.49,51.6
+5. Late 10+ min,True,101,1.7,94.1

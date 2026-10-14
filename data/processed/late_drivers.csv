@@ -1,0 +1,18 @@
+driver,level,orders,late_pct,avg_delivery_min
+Distance,0-1 km,22787,12.4,7.52
+Distance,1-2 km,41926,20.9,9.62
+Distance,2-3 km,23674,28.6,12.33
+Distance,3-4 km,12051,31.2,15.24
+Distance,4+ km,10101,59.5,19.74
+Rider utilisation,1. <60%,32680,12.7,10.06
+Rider utilisation,2. 60-90%,27048,14.9,10.34
+Rider utilisation,3. 90-120%,30063,20.4,10.74
+Rider utilisation,4. >120%,20748,66.6,15.34
+Time of day,1. Morning (6-11),25264,29.7,11.79
+Time of day,2. Afternoon (11-17),25692,19.9,10.69
+Time of day,3. Evening peak (17-22),46227,29.4,11.74
+Time of day,4. Late night (22-6),13356,14.2,10.08
+Weather,Clear,77291,23.5,11.11
+Weather,Cloudy,27094,23.3,11.17
+Weather,Heavy Rain,2868,63.0,14.71
+Weather,Rain,3286,55.2,13.89

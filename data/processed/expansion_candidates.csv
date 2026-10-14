@@ -1,0 +1,8 @@
+candidate_site_near,lat,lon,currently_served_by,orders_reassigned_6m,orders_reassigned_per_day,gmv_reassigned_6m_inr,avg_distance_now_km,avg_distance_new_km,late_pct_now,late_pct_new,avg_delivery_now,avg_delivery_new,network_late_pct_now,network_late_pct_new
+Carmelaram,12.9084,77.7034,S04,5578,30.8,1739479,4.78,1.46,49.7,12.7,18.27,8.82,25.44,23.58
+Begur,12.8923,77.6046,S06,2201,12.2,682590,4.91,3.28,57.2,30.3,19.37,14.73,25.44,24.9
+Jakkur,13.0701,77.6038,S12,1874,10.4,590657,4.49,1.17,48.5,21.1,18.31,8.91,25.44,24.97
+Domlur,12.9544,77.6414,S02,3784,20.9,1171530,2.93,1.46,26.3,16.7,13.36,9.21,25.44,25.11
+Electronic City Ph 2,12.8329,77.6835,S10,2022,11.2,635654,3.61,1.22,54.2,39.2,17.33,10.54,25.44,25.16
+Varthur,12.9605,77.7384,S07,2952,16.3,918910,3.9,2.79,48.6,39.5,17.79,14.65,25.44,25.2
+Basavanagudi,12.9766,77.5658,S09,967,5.3,307632,3.32,2.29,30.0,25.9,14.77,11.87,25.44,25.4

@@ -1,0 +1,61 @@
+store_id,cancel_reason,cancelled_orders,est_lost_gmv_inr
+S07,Delivery taking too long,307,95474.0
+S03,Delivery taking too long,257,80073.0
+S11,Delivery taking too long,154,47727.0
+S01,Delivery taking too long,152,47560.0
+S08,Delivery taking too long,151,46772.0
+S02,Delivery taking too long,149,46582.0
+S09,Delivery taking too long,142,44605.0
+S06,Delivery taking too long,124,38771.0
+S12,Delivery taking too long,123,38316.0
+S05,Delivery taking too long,123,38444.0
+S05,Changed mind,117,36569.0
+S01,Changed mind,116,36296.0
+S04,Changed mind,113,35030.0
+S10,Delivery taking too long,112,34891.0
+S03,Changed mind,97,30222.0
+S02,Changed mind,94,29387.0
+S04,Payment failed,93,28830.0
+S06,Changed mind,89,27827.0
+S09,Changed mind,72,22616.0
+S03,Payment failed,67,20875.0
+S01,Payment failed,67,20964.0
+S08,Changed mind,66,20443.0
+S02,Payment failed,66,20634.0
+S04,Delivery taking too long,65,20150.0
+S10,Changed mind,59,18380.0
+S05,Payment failed,58,18128.0
+S06,Payment failed,53,16571.0
+S03,Ordered by mistake,51,15890.0
+S04,Ordered by mistake,51,15810.0
+S09,Payment failed,49,15392.0
+S07,Changed mind,48,14928.0
+S06,Ordered by mistake,46,14383.0
+S11,Changed mind,46,14256.0
+S05,Items unavailable,44,13752.0
+S12,Changed mind,43,13395.0
+S02,Ordered by mistake,41,12818.0
+S05,Ordered by mistake,41,12815.0
+S07,Payment failed,40,12440.0
+S01,Ordered by mistake,38,11890.0
+S10,Payment failed,37,11526.0
+S08,Ordered by mistake,34,10531.0
+S08,Payment failed,30,9292.0
+S11,Payment failed,30,9297.0
+S09,Ordered by mistake,27,8481.0
+S10,Ordered by mistake,27,8411.0
+S07,Ordered by mistake,24,7464.0
+S10,Items unavailable,24,7477.0
+S12,Payment failed,23,7165.0
+S11,Ordered by mistake,19,5888.0
+S01,Items unavailable,18,5632.0
+S07,Items unavailable,16,4976.0
+S02,Items unavailable,16,5002.0
+S04,Items unavailable,15,4650.0
+S08,Items unavailable,15,4646.0
+S06,Items unavailable,15,4690.0
+S03,Items unavailable,14,4362.0
+S09,Items unavailable,13,4084.0
+S12,Ordered by mistake,12,3738.0
+S11,Items unavailable,6,1859.0
+S12,Items unavailable,4,1246.0

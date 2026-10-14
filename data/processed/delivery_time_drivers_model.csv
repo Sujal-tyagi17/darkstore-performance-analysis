@@ -1,0 +1,19 @@
+driver,minutes_added,ci_low,ci_high,p_value
+Each extra km of distance,2.84,2.83,2.86,0.0
+Rain (vs clear),1.82,1.72,1.92,1.8e-281
+Heavy rain (vs clear),2.7,2.58,2.82,0.0
+Peak traffic hour,1.78,1.76,1.81,0.0
+Each +10 pts rider utilisation above 75%,0.68,0.67,0.69,0.0
+Each extra item in the basket,0.4,0.39,0.41,0.0
+Weekend,-0.05,-0.08,-0.03,7.5e-05
+"Store effect S02 (vs Koramangala, all else equal)",0.01,-0.04,0.05,0.82
+"Store effect S03 (vs Koramangala, all else equal)",0.09,0.04,0.14,0.00057
+"Store effect S04 (vs Koramangala, all else equal)",0.12,0.07,0.16,5.7e-07
+"Store effect S05 (vs Koramangala, all else equal)",-0.02,-0.06,0.03,0.46
+"Store effect S06 (vs Koramangala, all else equal)",-0.03,-0.08,0.02,0.21
+"Store effect S07 (vs Koramangala, all else equal)",-0.14,-0.21,-0.08,2.6e-05
+"Store effect S08 (vs Koramangala, all else equal)",-0.02,-0.08,0.04,0.5
+"Store effect S09 (vs Koramangala, all else equal)",-0.03,-0.08,0.02,0.2
+"Store effect S10 (vs Koramangala, all else equal)",2.02,1.96,2.08,0.0
+"Store effect S11 (vs Koramangala, all else equal)",0.02,-0.04,0.08,0.53
+"Store effect S12 (vs Koramangala, all else equal)",-0.06,-0.13,0.01,0.1

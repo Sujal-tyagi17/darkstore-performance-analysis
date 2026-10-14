@@ -1,0 +1,26 @@
+if_customer_buys,they_also_buy,support,confidence,lift,orders_with_both
+Baby Wipes (72 pcs),Diapers Medium (20 pcs),0.015,0.532,14.545,1659
+Cup Noodles + Frozen Paratha (5 pcs),Instant Noodles Masala (4 pack),0.01,0.77,7.392,1106
+Dishwash Bar (3 pcs),Liquid Detergent 1L,0.01,0.291,7.347,1106
+Cup Noodles + Tomato Ketchup 500g,Instant Noodles Masala (4 pack),0.009,0.746,7.16,995
+Chocolate Ice Cream Cone + Kulfi Stick,Vanilla Ice Cream Tub 700ml,0.012,0.592,6.6,1327
+Kulfi Stick,Chocolate Ice Cream Cone,0.02,0.416,6.436,2212
+Apple Shimla (4 pcs),Banana (6 pcs),0.014,0.438,6.394,1549
+Cup Noodles,Instant Noodles Masala (4 pack),0.031,0.64,6.143,3429
+Green Chilli 100g + Potato 1kg,Tomato 1kg,0.01,0.762,6.038,1106
+Green Chilli 100g + Paneer 200g,Tomato 1kg,0.01,0.753,5.971,1106
+Coriander Bunch + Paneer 200g,Tomato 1kg,0.013,0.753,5.967,1438
+Coriander Bunch + Potato 1kg,Tomato 1kg,0.012,0.753,5.967,1327
+Frozen Paratha (5 pcs),Cup Noodles,0.013,0.291,5.96,1438
+Coriander Bunch + Green Chilli 100g,Tomato 1kg,0.029,0.751,5.952,3208
+Coriander Bunch + Whole Wheat Atta 5kg,Tomato 1kg,0.013,0.751,5.951,1438
+Frozen Paratha (5 pcs),Instant Noodles Masala (4 pack),0.027,0.618,5.929,2986
+Coriander Bunch + Tomato 1kg,Onion 1kg,0.052,0.803,5.918,5752
+Coriander Bunch + Paneer 200g,Onion 1kg,0.014,0.803,5.917,1549
+Green Chilli 100g + Tomato 1kg,Onion 1kg,0.043,0.802,5.911,4756
+Coriander Bunch + Green Chilli 100g,Onion 1kg,0.031,0.801,5.905,3429
+Ginger 100g + Green Chilli 100g,Onion 1kg,0.011,0.8,5.893,1217
+Coriander Bunch + Ginger 100g,Tomato 1kg,0.013,0.743,5.891,1438
+Green Chilli 100g + Lemon (4 pcs),Tomato 1kg,0.01,0.743,5.891,1106
+Green Chilli 100g + Potato 1kg,Onion 1kg,0.011,0.799,5.888,1217
+Green Chilli 100g + Whole Wheat Atta 5kg,Tomato 1kg,0.01,0.742,5.883,1106

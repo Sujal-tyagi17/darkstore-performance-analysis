@@ -1,0 +1,5 @@
+first_order_experience,customers,repeat_within_30d_pct,avg_orders_next_30d
+On time,4670,69.7,1.61
+Late by < 5 min,1164,62.6,1.42
+Late by 5+ min,372,53.0,1.06
+Cancelled,231,61.0,1.34
