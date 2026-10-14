@@ -7,8 +7,8 @@ S08,Delivery taking too long,151,46772.0
 S02,Delivery taking too long,149,46582.0
 S09,Delivery taking too long,142,44605.0
 S06,Delivery taking too long,124,38771.0
-S12,Delivery taking too long,123,38316.0
 S05,Delivery taking too long,123,38444.0
+S12,Delivery taking too long,123,38316.0
 S05,Changed mind,117,36569.0
 S01,Changed mind,116,36296.0
 S04,Changed mind,113,35030.0
@@ -40,8 +40,8 @@ S07,Payment failed,40,12440.0
 S01,Ordered by mistake,38,11890.0
 S10,Payment failed,37,11526.0
 S08,Ordered by mistake,34,10531.0
-S08,Payment failed,30,9292.0
 S11,Payment failed,30,9297.0
+S08,Payment failed,30,9292.0
 S09,Ordered by mistake,27,8481.0
 S10,Ordered by mistake,27,8411.0
 S07,Ordered by mistake,24,7464.0
@@ -52,8 +52,8 @@ S01,Items unavailable,18,5632.0
 S07,Items unavailable,16,4976.0
 S02,Items unavailable,16,5002.0
 S04,Items unavailable,15,4650.0
-S08,Items unavailable,15,4646.0
 S06,Items unavailable,15,4690.0
+S08,Items unavailable,15,4646.0
 S03,Items unavailable,14,4362.0
 S09,Items unavailable,13,4084.0
 S12,Ordered by mistake,12,3738.0

@@ -8,3 +8,4 @@ venv/
 data/darkstore.duckdb
 data/darkstore.duckdb.wal
 .pytest_cache/
+data/powerbi/
