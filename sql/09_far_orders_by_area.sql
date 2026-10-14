@@ -12,4 +12,4 @@ SELECT c.area,
 FROM fact_orders o
 JOIN dim_customer c USING (customer_id)
 GROUP BY 1, 2
-ORDER BY avg_distance_km DESC;
+ORDER BY avg_distance_km DESC, c.area, o.store_id;

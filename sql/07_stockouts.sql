@@ -17,4 +17,4 @@ SELECT store_id,
 FROM lines
 GROUP BY 1, 2, 3, 4
 HAVING sum((NOT fulfilled)::INT) > 0
-ORDER BY lost_revenue_inr DESC;
+ORDER BY lost_revenue_inr DESC, store_id, sku_id;

@@ -11,4 +11,4 @@ FROM fact_orders o
 JOIN aov a USING (store_id)
 WHERE o.status = 'Cancelled'
 GROUP BY o.store_id, o.cancel_reason, a.aov
-ORDER BY cancelled_orders DESC;
+ORDER BY cancelled_orders DESC, o.store_id, o.cancel_reason;

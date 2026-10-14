@@ -72,12 +72,14 @@ def load(con):
         FROM fact_orders o
         JOIN dim_customer c USING (customer_id)
         JOIN dim_date d ON d.date = o.order_date
+        ORDER BY o.order_id
     """).df()
     stores = con.execute("SELECT * FROM dim_store ORDER BY store_id").df()
     items = con.execute("""
         SELECT i.order_id, p.product_name
         FROM fact_order_items i JOIN dim_product p USING (sku_id)
         WHERE i.status = 'Delivered'
+        ORDER BY i.order_id, i.line_no
     """).df()
     return orders, stores, items
 
