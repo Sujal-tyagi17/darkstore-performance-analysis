@@ -1,0 +1,13 @@
+store_id,store_name,locality,lat,lon,area_sqft,opened_on
+S01,DS Koramangala,Koramangala,12.9352,77.6245,4200,2024-03-01
+S02,DS Indiranagar,Indiranagar,12.9784,77.6408,4000,2024-03-01
+S03,DS HSR Layout,HSR Layout,12.9116,77.6474,3800,2024-06-15
+S04,DS Bellandur,Bellandur,12.926,77.6762,3900,2024-09-01
+S05,DS Jayanagar,Jayanagar,12.9299,77.5826,3600,2024-06-15
+S06,DS BTM Layout,BTM Layout,12.9166,77.6101,3700,2024-09-01
+S07,DS Whitefield,Whitefield,12.9698,77.75,4100,2025-01-10
+S08,DS Marathahalli,Marathahalli,12.9569,77.7011,3900,2025-01-10
+S09,DS Malleshwaram,Malleshwaram,13.0031,77.5643,3500,2025-04-01
+S10,DS Electronic City,Electronic City,12.8452,77.6602,2600,2023-11-20
+S11,DS Hebbal,Hebbal,13.0358,77.597,3800,2025-04-01
+S12,DS Yelahanka,Yelahanka,13.1005,77.5963,3400,2025-07-01

@@ -1,0 +1,61 @@
+sku_id,product_name,category,mrp
+P001,Toned Milk 500ml,Dairy & Bread,28
+P002,Full Cream Milk 1L,Dairy & Bread,68
+P003,White Bread 400g,Dairy & Bread,45
+P004,Brown Bread 400g,Dairy & Bread,55
+P005,Eggs (6 pcs),Dairy & Bread,54
+P006,Salted Butter 100g,Dairy & Bread,58
+P007,Curd 400g,Dairy & Bread,40
+P008,Paneer 200g,Dairy & Bread,90
+P009,Cheese Slices 200g,Dairy & Bread,140
+P010,Onion 1kg,Fruits & Vegetables,42
+P011,Tomato 1kg,Fruits & Vegetables,36
+P012,Potato 1kg,Fruits & Vegetables,38
+P013,Coriander Bunch,Fruits & Vegetables,15
+P014,Green Chilli 100g,Fruits & Vegetables,12
+P015,Banana (6 pcs),Fruits & Vegetables,48
+P016,Apple Shimla (4 pcs),Fruits & Vegetables,160
+P017,Lemon (4 pcs),Fruits & Vegetables,20
+P018,Ginger 100g,Fruits & Vegetables,18
+P019,Potato Chips Classic 52g,Snacks,20
+P020,Masala Potato Chips 90g,Snacks,40
+P021,Bhujia Namkeen 200g,Snacks,55
+P022,Milk Chocolate Bar 50g,Snacks,50
+P023,Cream Biscuits 120g,Snacks,35
+P024,Salted Peanuts 200g,Snacks,60
+P025,Cola 750ml,Beverages,40
+P026,Lemon Soda 750ml,Beverages,40
+P027,Packaged Water 1L,Beverages,20
+P028,Mango Drink 600ml,Beverages,35
+P029,Instant Coffee 50g,Beverages,165
+P030,Tea Leaves 250g,Beverages,140
+P031,Energy Drink 250ml,Beverages,125
+P032,Instant Noodles Masala (4 pack),Instant Food,56
+P033,Cup Noodles,Instant Food,50
+P034,Tomato Ketchup 500g,Instant Food,120
+P035,Ready-to-Eat Dal Makhani,Instant Food,99
+P036,Frozen Paratha (5 pcs),Instant Food,85
+P037,Vanilla Ice Cream Tub 700ml,Ice Cream & Frozen,180
+P038,Chocolate Ice Cream Cone,Ice Cream & Frozen,45
+P039,Kulfi Stick,Ice Cream & Frozen,30
+P040,Frozen Peas 500g,Ice Cream & Frozen,95
+P041,Whole Wheat Atta 5kg,Staples,265
+P042,Sunflower Oil 1L,Staples,155
+P043,Basmati Rice 1kg,Staples,140
+P044,Toor Dal 1kg,Staples,170
+P045,Sugar 1kg,Staples,48
+P046,Iodised Salt 1kg,Staples,28
+P047,Liquid Detergent 1L,Household,210
+P048,Dishwash Bar (3 pcs),Household,60
+P049,Garbage Bags (30 pcs),Household,99
+P050,Toilet Cleaner 500ml,Household,105
+P051,Tissue Roll (4 pcs),Household,140
+P052,Toothpaste 150g,Personal Care,110
+P053,Bath Soap (4 pcs),Personal Care,160
+P054,Shampoo 180ml,Personal Care,185
+P055,Sanitary Pads (15 pcs),Personal Care,199
+P056,Hand Wash Refill 750ml,Personal Care,115
+P057,Diapers Medium (20 pcs),Baby Care,399
+P058,Baby Wipes (72 pcs),Baby Care,165
+P059,Paracetamol Strip (OTC),Health & OTC,32
+P060,Antacid Sachets,Health & OTC,45
