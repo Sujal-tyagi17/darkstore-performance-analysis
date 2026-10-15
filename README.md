@@ -2,7 +2,7 @@
 
 **An end-to-end analysis of 386,593 orders from 52 dark stores in 8 Indian metros (Jan–Jun 2026), from a messy raw export to a diagnosis of every store and a ranked, simulated action plan.**
 
-**▶ Live dashboard: [darkstore-pulse-india.streamlit.app](https://darkstore-pulse-india.streamlit.app/)** (if it has been idle, click "wake up" and give it about 30 seconds)
+**▶ Live dashboard: [darkstore-pulse-india.streamlit.app](https://darkstore-pulse-india.streamlit.app/)** 
 
 `SQL (DuckDB)` · `Python (pandas, statsmodels, scikit-learn, mlxtend)` · `Streamlit + Plotly` · `Power BI-ready star schema` · `pytest`
 
