@@ -2,6 +2,8 @@
 
 **An end-to-end analysis of 386,593 orders from 52 dark stores in 8 Indian metros (Jan–Jun 2026), from a messy raw export to a diagnosis of every store and a ranked, simulated action plan.**
 
+**▶ Live dashboard: [darkstore-pulse-india.streamlit.app](https://darkstore-pulse-india.streamlit.app/)**
+
 `SQL (DuckDB)` · `Python (pandas, statsmodels, scikit-learn, mlxtend)` · `Streamlit + Plotly` · `Power BI-ready star schema` · `pytest`
 
 ![Late rate by city](reports/figures/01_city_late_rate.png)
@@ -117,7 +119,7 @@ streamlit run dashboard/app.py # dashboard at http://localhost:8501
 python run_all.py --regen      # optional: regenerate the raw data (seeded, reproducible)
 ```
 
-**Deploying the dashboard:** on [Streamlit Community Cloud](https://share.streamlit.io), create an app from this repo with main file `dashboard/app.py`. It builds the warehouse from the committed raw data on first load.
+**Live version:** [darkstore-pulse-india.streamlit.app](https://darkstore-pulse-india.streamlit.app/), deployed on Streamlit Community Cloud (main file `dashboard/app.py`, Python 3.13). It builds the warehouse from the committed raw data on first load and redeploys automatically on every push to `main`.
 
 ## About the data
 
