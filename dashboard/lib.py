@@ -48,7 +48,17 @@ def colors() -> dict:
 # ---------------------------------------------------------------------------
 @st.cache_resource(show_spinner="Building the warehouse from the raw data (first run only)…")
 def connection() -> duckdb.DuckDBPyConnection:
-    if not DB_PATH.exists():
+    def is_current() -> bool:
+        if not DB_PATH.exists():
+            return False
+        try:
+            with duckdb.connect(str(DB_PATH), read_only=True) as c:
+                c.execute("SELECT city_code FROM fact_orders LIMIT 1")
+            return True
+        except duckdb.Error:          # missing, or built by an older version of the project
+            return False
+
+    if not is_current():
         import build_warehouse
         build_warehouse.build_database()
     return duckdb.connect(str(DB_PATH), read_only=True)
