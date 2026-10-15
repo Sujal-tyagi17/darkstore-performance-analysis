@@ -2,11 +2,13 @@
 
 **An end-to-end analysis of 386,593 orders from 52 dark stores in 8 Indian metros (Jan–Jun 2026), from a messy raw export to a diagnosis of every store and a ranked, simulated action plan.**
 
-**▶ Live dashboard: [darkstore-pulse-india.streamlit.app](https://darkstore-pulse-india.streamlit.app/)**
+**▶ Live dashboard: [darkstore-pulse-india.streamlit.app](https://darkstore-pulse-india.streamlit.app/)** (if it has been idle, click "wake up" and give it about 30 seconds)
 
 `SQL (DuckDB)` · `Python (pandas, statsmodels, scikit-learn, mlxtend)` · `Streamlit + Plotly` · `Power BI-ready star schema` · `pytest`
 
-![Late rate by city](reports/figures/01_city_late_rate.png)
+> **About the data:** real dark-store data isn't public, so the orders are **simulated** from an operational model of delivery (picking + rider wait + travel), modelled on each city's real traffic, seasons and festivals. The analysis had to find every problem from the order data alone. [How the data was built](#about-the-data).
+
+![DarkStore Pulse dashboard](docs/images/dashboard_india.png)
 
 ---
 
@@ -32,7 +34,7 @@ A quick-commerce company promises 10-minute delivery in Bengaluru, Mumbai, Delhi
 
 ## Recommendations (each simulated on the data)
 
-Today about **562 orders a day** arrive late. The 21 fixes in the [action plan](data/processed/action_plan.csv) would prevent about **165 of them**. The top ten:
+Across the network, about **562 orders a day** arrived late (Jan–Jun average). The 21 fixes in the [action plan](data/processed/action_plan.csv) would prevent about **165 of them**. The top ten:
 
 | # | Fix | Where | What it takes | Simulated late rate |
 |---|---|---|---|---|
@@ -57,10 +59,11 @@ Quick win: show *"frequently bought together"* prompts for the strongest basket 
 
 | | |
 |---|---|
-| ![Weekly trend by city](reports/figures/02_city_weekly_trend.png) | ![Weather by city](reports/figures/03_weather_by_city.png) |
+| ![Late rate by city](reports/figures/01_city_late_rate.png) | ![Weather by city](reports/figures/03_weather_by_city.png) |
+| ![Weekly trend by city](reports/figures/02_city_weekly_trend.png) | ![Retention](reports/figures/08_retention_after_first_order.png) |
 | ![Store bottlenecks](reports/figures/04_store_bottlenecks.png) | ![Minutes per km](reports/figures/06_minutes_per_km_by_city.png) |
 | ![Incident detection](reports/figures/07_incident_detection.png) | ![Action plan](reports/figures/12_action_plan.png) |
-| ![Retention](reports/figures/08_retention_after_first_order.png) | ![10-minute radius](reports/figures/13_ten_minute_radius.png) |
+| ![Rating vs lateness](reports/figures/09_rating_vs_lateness.png) | ![10-minute radius](reports/figures/13_ten_minute_radius.png) |
 
 More in [`reports/figures/`](reports/figures), and the full walkthrough in [`notebooks/darkstore_analysis.ipynb`](notebooks/darkstore_analysis.ipynb).
 
@@ -102,6 +105,8 @@ data/raw/ ──► sql/00_staging.sql ──► DuckDB star schema ──► sq
 | **Action plan** | All 21 fixes, filterable by type, downloadable as CSV |
 | **About the data** | How the data was simulated and analysed, and the data quality log |
 
+![Store drill-down](docs/images/dashboard_store.png)
+
 It supports light and dark themes and works on phones. A Power BI version can be built from the exported star schema; the data model, DAX measures and page layout are in [`docs/powerbi_guide.md`](docs/powerbi_guide.md).
 
 ## How to run
@@ -109,7 +114,8 @@ It supports light and dark themes and works on phones. A Power BI version can be
 ```bash
 git clone https://github.com/Sujal-tyagi17/darkstore-performance-analysis.git
 cd darkstore-performance-analysis
-python -m venv .venv && .venv\Scripts\activate      # Windows (macOS/Linux: source .venv/bin/activate)
+python -m venv .venv
+.venv\Scripts\activate         # Windows; on macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
 
 python run_all.py              # warehouse + SQL + analysis + charts + Power BI export (about 1 minute)
@@ -154,7 +160,7 @@ Because the data is simulated, treat the exact numbers as an illustration of the
 ├── .streamlit/config.toml   # light and dark themes
 ├── notebooks/               # narrative walkthrough of the analysis
 ├── reports/                 # figures, metrics.json, data_quality.md
-├── docs/powerbi_guide.md    # data model + DAX measures
+├── docs/                    # Power BI guide (data model + DAX), dashboard screenshots
 ├── tests/                   # pytest data-integrity checks
 └── run_all.py               # one-command pipeline
 ```
