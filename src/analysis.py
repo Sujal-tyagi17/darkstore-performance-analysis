@@ -263,7 +263,7 @@ def whatif_staffing(valid, con, curve, store_id, since=None):
         "avg_delivery_after": round((d.pick_min + wait_new + d.travel_min).mean(), 2),
         "orders_per_day": round(len(d) / days, 1),
         "late_avoided_per_day": round((d.is_late.sum() - late_new.sum()) / days, 1),
-        "effort": f"+{extra} rider-hours/day (biggest gaps at {', '.join(f'{h}:00' for h in hours)})",
+        "effort": f"+{extra:.0f} rider-hours a day, mostly {', '.join(f'{h}:00' for h in hours)}",
     }
 
 
@@ -280,7 +280,7 @@ def whatif_picking(valid, store_id):
         "avg_delivery_after": round((new_pick + d.rider_wait_min + d.travel_min).mean(), 2),
         "orders_per_day": round(len(d) / days, 1),
         "late_avoided_per_day": round((d.is_late.sum() - late_new.sum()) / days, 1),
-        "effort": f"cut picking from {d.pick_min.mean():.1f} to {target:.1f} min/order (layout, slotting)",
+        "effort": f"Cut picking from {d.pick_min.mean():.1f} to {target:.1f} min an order",
     }
 
 
@@ -373,7 +373,8 @@ def build_action_plan(valid, orders, con, stores, incidents, expansion):
     for r in breakdown.itertuples():
         if r.store_id in ongoing:
             sim = whatif_staffing(valid, con, curve, r.store_id, since=ongoing[r.store_id])
-            actions.append({"type": "Riders", "problem": f"Rider capacity fell from {ongoing[r.store_id]} (ongoing incident)",
+            since_txt = pd.Timestamp(ongoing[r.store_id]).strftime("%d %b").lstrip("0")
+            actions.append({"type": "Riders", "problem": f"Riders on shift halved from the week of {since_txt} and have not recovered",
                             "action": "Restore rider capacity: re-hire and add incentive shifts", **sim,
                             "store_id": r.store_id})
         elif r.primary_bottleneck == "Rider shortage":
@@ -385,7 +386,7 @@ def build_action_plan(valid, orders, con, stores, incidents, expansion):
             sim = whatif_picking(valid, r.store_id)
             actions.append({"type": "Picking", "problem": f"Picking takes {r.pick_min:.1f} min "
                                                           f"(India avg {r.pick_min - r.pick_gap_vs_india:.1f})",
-                            "action": "Re-slot fast movers near packing, audit layout", **sim, "store_id": r.store_id})
+                            "action": "Move fast-selling items next to packing and fix the store layout", **sim, "store_id": r.store_id})
     for a in actions:
         a["city_name"] = cities[a["store_id"]]
         a["where"] = f"{names[a['store_id']]} ({a['store_id']})"
@@ -398,7 +399,7 @@ def build_action_plan(valid, orders, con, stores, incidents, expansion):
             "where": f"New site near {e.candidate_site_near}",
             "problem": f"{e.orders_reassigned_per_day:.0f} orders/day travel {e.avg_distance_now_km:.1f} km on average",
             "action": f"Open a dark store near {e.candidate_site_near}",
-            "effort": "1 new site (capex + ~3 months to launch)",
+            "effort": "One new site, about 3 months to launch",
             "late_pct_now": e.late_pct_now, "late_pct_after": e.late_pct_new,
             "avg_delivery_now": e.avg_delivery_now, "avg_delivery_after": e.avg_delivery_new,
             "orders_per_day": e.orders_reassigned_per_day, "late_avoided_per_day": e.late_avoided_per_day,

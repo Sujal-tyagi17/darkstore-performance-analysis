@@ -1,350 +1,44 @@
 """
-DarkStore Pulse - interactive dashboard for the dark store performance analysis.
+DarkStore Pulse: India-wide dashboard for the dark store performance analysis.
 
-Run locally:   streamlit run dashboard/app.py
+Run from the repository root:   streamlit run dashboard/app.py
 """
 
 from __future__ import annotations
 
-import json
-import sys
 from pathlib import Path
 
-import duckdb
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
 import streamlit as st
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
-from build_warehouse import DB_PATH, PROCESSED, REPORTS  # noqa: E402
+import lib
 
-BLUE, ORANGE, AQUA, GREY = "#2a78d6", "#eb6834", "#1baf7a", "#c3c2b7"
-STAGE_COLORS = {"Picking & packing": BLUE, "Waiting for a rider": ORANGE, "Travel to customer": AQUA}
+HERE = Path(__file__).parent
+st.set_page_config(page_title="DarkStore Pulse", page_icon=":material/electric_moped:", layout="wide")
+st.html(lib.CSS)
 
-st.set_page_config(page_title="DarkStore Pulse", page_icon="🛵", layout="wide")
+lib.connection()  # build the warehouse on first run
 
+pages = [
+    st.Page(HERE / "views/overview.py", title="India", icon=":material/public:", default=True),
+    st.Page(HERE / "views/cities.py", url_path="cities", title="Cities", icon=":material/location_city:"),
+    st.Page(HERE / "views/stores.py", url_path="stores", title="Stores", icon=":material/storefront:"),
+    st.Page(HERE / "views/drivers.py", url_path="why-late", title="Why orders are late", icon=":material/timer:"),
+    st.Page(HERE / "views/incidents.py", url_path="alerts", title="Alerts", icon=":material/notifications_active:"),
+    st.Page(HERE / "views/stock.py", url_path="stock", title="Stock & baskets", icon=":material/inventory_2:"),
+    st.Page(HERE / "views/expansion.py", url_path="new-stores", title="New stores", icon=":material/add_location_alt:"),
+    st.Page(HERE / "views/actions.py", url_path="action-plan", title="Action plan", icon=":material/checklist:"),
+    st.Page(HERE / "views/about.py", url_path="about", title="About the data", icon=":material/info:"),
+]
+page = st.navigation(pages, position="top")
 
-# ---------------------------------------------------------------------------
-# Data
-# ---------------------------------------------------------------------------
-@st.cache_resource(show_spinner="Building the warehouse from raw CSVs (first run only)...")
-def get_connection():
-    if not DB_PATH.exists():
-        import build_warehouse
-        build_warehouse.main()
-    return duckdb.connect(str(DB_PATH), read_only=True)
+# ---- global filter bar (shared by every page) -------------------------------
+names = lib.city_names()
+with st.container(horizontal=True, vertical_alignment="bottom", gap="medium"):
+    st.pills("Cities", options=list(names), format_func=lambda c: names[c], selection_mode="multi",
+             key="f_cities", help="Leave all unselected to see the whole of India.", wrap=True)
+    st.segmented_control("Period", options=list(lib.PERIODS), key="f_period", default="Jan–Jun",
+                         help="Data covers 1 January to 30 June 2026.")
+page.run()
 
-
-@st.cache_data
-def processed(name: str) -> pd.DataFrame:
-    return pd.read_csv(PROCESSED / f"{name}.csv")
-
-
-@st.cache_data
-def metrics() -> dict:
-    return json.loads((REPORTS / "metrics.json").read_text())
-
-
-@st.cache_data
-def query(sql: str) -> pd.DataFrame:
-    return get_connection().execute(sql).df()
-
-
-def style_fig(fig, height=380):
-    fig.update_layout(
-        height=height, margin=dict(l=10, r=10, t=80, b=10),
-        title=dict(y=0.97, yanchor="top"),
-        font=dict(family="system-ui, -apple-system, Segoe UI, sans-serif", size=13),
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0, title=None),
-        plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
-        hoverlabel=dict(font_size=12),
-    )
-    fig.update_xaxes(showgrid=False)
-    fig.update_yaxes(gridcolor="rgba(137,135,129,0.25)")
-    return fig
-
-
-con = get_connection()
-stores = query("SELECT store_id, store_name, locality, lat, lon FROM dim_store ORDER BY store_id")
-store_label = {r.store_id: f"{r.store_id} · {r.locality}" for r in stores.itertuples()}
-m = metrics()
-
-# ---------------------------------------------------------------------------
-# Sidebar filters
-# ---------------------------------------------------------------------------
-st.sidebar.title("🛵 DarkStore Pulse")
-st.sidebar.caption("Quick-commerce dark store analytics · Bengaluru · Jan–Jun 2026")
-date_range = st.sidebar.date_input(
-    "Date range", value=(pd.Timestamp("2026-01-01"), pd.Timestamp("2026-06-30")),
-    min_value=pd.Timestamp("2026-01-01"), max_value=pd.Timestamp("2026-06-30"),
-)
-if not isinstance(date_range, (list, tuple)) or len(date_range) != 2:
-    st.stop()
-start, end = (pd.Timestamp(d).date() for d in date_range)
-sel_stores = st.sidebar.multiselect("Stores", list(store_label), default=list(store_label),
-                                    format_func=lambda s: store_label[s])
-if not sel_stores:
-    st.warning("Select at least one store.")
-    st.stop()
-store_list = ", ".join(f"'{s}'" for s in sel_stores)
-WHERE = f"order_date BETWEEN DATE '{start}' AND DATE '{end}' AND store_id IN ({store_list})"
-st.sidebar.markdown("---")
-st.sidebar.caption("Data is synthetic, generated by a documented operational simulation. "
-                   "See the README for details.")
-
-# ---------------------------------------------------------------------------
-st.title("Dark Store Performance")
-tabs = st.tabs(["Overview", "Store scorecard", "Why orders are late", "Incident monitor",
-                "Stockouts & baskets", "Next store location", "Recommendations"])
-
-# ----------------------------- Overview -------------------------------------
-with tabs[0]:
-    k = query(f"""
-        SELECT count(*) orders,
-               sum(order_value) FILTER (WHERE is_delivered) gmv,
-               avg(delivery_min) FILTER (WHERE valid_timing) avg_min,
-               100*avg(is_late::INT) FILTER (WHERE valid_timing) late,
-               100*avg((status='Cancelled')::INT) cancel,
-               avg(rating) rating
-        FROM fact_orders WHERE {WHERE}
-    """).iloc[0]
-    c = st.columns(6)
-    c[0].metric("Orders", f"{k.orders:,.0f}")
-    c[1].metric("GMV", f"₹{k.gmv/1e5:,.1f} L")
-    c[2].metric("Avg delivery", f"{k.avg_min:.1f} min")
-    c[3].metric("Late deliveries", f"{k.late:.1f}%")
-    c[4].metric("Cancelled", f"{k.cancel:.1f}%")
-    c[5].metric("Avg rating", f"{k.rating:.2f} ★")
-
-    trend = query(f"""
-        SELECT date_trunc('week', order_date) AS week, count(*) orders,
-               100*avg(is_late::INT) FILTER (WHERE valid_timing) late_pct,
-               avg(delivery_min) FILTER (WHERE valid_timing) avg_delivery_min
-        FROM fact_orders WHERE {WHERE} GROUP BY 1
-        HAVING count(DISTINCT order_date) = 7      -- drop partial weeks at the edges
-        ORDER BY 1
-    """)
-    left, right = st.columns(2)
-    fig = px.bar(trend, x="week", y="orders", title="Weekly orders", color_discrete_sequence=[BLUE])
-    fig.update_traces(hovertemplate="Week of %{x|%d %b}<br>%{y:,} orders<extra></extra>")
-    fig.update_xaxes(title=None); fig.update_yaxes(title="Orders")
-    left.plotly_chart(style_fig(fig), width="stretch")
-    fig = px.line(trend, x="week", y="late_pct", markers=True, title="Weekly late-delivery rate (%)",
-                  color_discrete_sequence=[ORANGE])
-    fig.update_traces(hovertemplate="Week of %{x|%d %b}<br>%{y:.1f}% late<extra></extra>")
-    fig.update_layout(hovermode="x unified")
-    fig.update_xaxes(title=None); fig.update_yaxes(title="Late %", rangemode="tozero")
-    right.plotly_chart(style_fig(fig), width="stretch")
-    st.caption("Late rate climbs from April as pre-monsoon rain arrives, and HSR Layout's rider "
-               "shortage from 18 May adds to it.")
-
-# ----------------------------- Scorecard ------------------------------------
-with tabs[1]:
-    sc = query(f"""
-        SELECT o.store_id, s.locality AS store,
-               count(*) AS orders,
-               round(sum(order_value) FILTER (WHERE is_delivered)/1e5, 2) AS gmv_lakh,
-               round(avg(delivery_min) FILTER (WHERE valid_timing), 1) AS avg_delivery_min,
-               round(100*avg(is_late::INT) FILTER (WHERE valid_timing), 1) AS late_pct,
-               round(100*avg((status='Cancelled')::INT), 1) AS cancel_pct,
-               round(avg(rating), 2) AS rating,
-               round(avg(distance_km), 2) AS avg_km,
-               round(avg(rider_utilization), 2) AS rider_util,
-               round(avg(pick_min) FILTER (WHERE valid_timing), 2) AS pick_min,
-               round(avg(rider_wait_min) FILTER (WHERE valid_timing), 2) AS wait_min,
-               round(avg(travel_min) FILTER (WHERE valid_timing), 2) AS travel_min
-        FROM fact_orders o JOIN dim_store s USING (store_id)
-        WHERE {WHERE} GROUP BY 1, 2 ORDER BY late_pct DESC
-    """)
-    st.subheader("Store scorecard")
-    st.dataframe(
-        sc.drop(columns=["pick_min", "wait_min", "travel_min"]).style
-          .background_gradient(subset=["late_pct", "avg_delivery_min", "cancel_pct"], cmap="Oranges")
-          .background_gradient(subset=["rating"], cmap="Blues")
-          .format(precision=2),
-        width="stretch", hide_index=True,
-    )
-    long = sc.melt(id_vars="store_id", value_vars=["pick_min", "wait_min", "travel_min"],
-                   var_name="stage", value_name="minutes")
-    long["stage"] = long.stage.map({"pick_min": "Picking & packing", "wait_min": "Waiting for a rider",
-                                    "travel_min": "Travel to customer"})
-    fig = px.bar(long, y="store_id", x="minutes", color="stage", orientation="h",
-                 color_discrete_map=STAGE_COLORS, title="Where each store loses time (avg minutes per order)",
-                 category_orders={"store_id": list(sc.store_id)})
-    fig.update_xaxes(title="Minutes"); fig.update_yaxes(title=None)
-    fig.update_traces(marker_line_width=2, marker_line_color="white",
-                      hovertemplate="%{y}: %{x:.2f} min<extra>%{fullData.name}</extra>")
-    st.plotly_chart(style_fig(fig, 460), width="stretch")
-
-    st.subheader("Store drill-down")
-    one = st.selectbox("Store", sel_stores, format_func=lambda s: store_label[s])
-    hr = query(f"""
-        SELECT order_hour, count(*) orders, 100*avg(is_late::INT) late_pct, avg(rider_utilization) util
-        FROM fact_orders WHERE {WHERE} AND store_id = '{one}' AND valid_timing GROUP BY 1 ORDER BY 1
-    """)
-    a, b = st.columns(2)
-    fig = px.bar(hr, x="order_hour", y="orders", title=f"{store_label[one]}: orders by hour",
-                 color_discrete_sequence=[BLUE])
-    fig.update_xaxes(title="Hour of day"); fig.update_yaxes(title="Orders")
-    a.plotly_chart(style_fig(fig, 320), width="stretch")
-    fig = px.line(hr, x="order_hour", y="late_pct", markers=True, title="Late % by hour",
-                  color_discrete_sequence=[ORANGE])
-    fig.update_xaxes(title="Hour of day"); fig.update_yaxes(title="Late %", rangemode="tozero")
-    b.plotly_chart(style_fig(fig, 320), width="stretch")
-
-# ----------------------------- Drivers --------------------------------------
-with tabs[2]:
-    st.subheader("What makes an order late?")
-    drv = processed("late_drivers")
-    cols = st.columns(4)
-    for col, name in zip(cols, ["Distance", "Rider utilisation", "Weather", "Time of day"]):
-        d = drv[drv.driver == name].copy()
-        if name == "Weather":
-            d["level"] = pd.Categorical(d.level, ["Clear", "Cloudy", "Rain", "Heavy Rain"], ordered=True)
-            d = d.sort_values("level")
-        d["level"] = (d.level.astype(str).str.replace(r"^\d\. ", "", regex=True)
-                      .str.replace(r" \(.*\)$", "", regex=True))
-        fig = px.bar(d, x="level", y="late_pct", title=name, color_discrete_sequence=[BLUE],
-                     custom_data=["orders"])
-        fig.update_traces(hovertemplate="%{x}<br>%{y:.1f}% late<br>%{customdata[0]:,} orders<extra></extra>")
-        fig.update_xaxes(title=None, tickangle=-35); fig.update_yaxes(title="Late %", range=[0, 75])
-        col.plotly_chart(style_fig(fig, 320), width="stretch")
-
-    st.subheader("Regression: minutes added to delivery time by each factor")
-    coef = processed("delivery_time_drivers_model")
-    coef = coef[~coef.driver.str.startswith("Store effect") | (coef.p_value < 0.001) & (coef.minutes_added.abs() > 0.5)]
-    fig = px.bar(coef.sort_values("minutes_added"), x="minutes_added", y="driver", orientation="h",
-                 error_x=coef.sort_values("minutes_added").ci_high - coef.sort_values("minutes_added").minutes_added,
-                 color_discrete_sequence=[BLUE])
-    fig.update_traces(hovertemplate="%{y}<br>+%{x:.2f} min<extra></extra>")
-    fig.update_xaxes(title="Minutes added (95% CI)"); fig.update_yaxes(title=None)
-    st.plotly_chart(style_fig(fig, 360), width="stretch")
-    st.caption(f"OLS with store fixed effects, R² = {m['model_r2']}. After controlling for distance, "
-               "weather, traffic and rider load, only Electronic City (S10) is still slower than other "
-               "stores - its problem is inside the store (picking), not outside it.")
-
-    rt = processed("rating_vs_lateness")
-    rt["lateness"] = rt.lateness.str.replace(r"^\d\. ", "", regex=True)
-    rt["Items"] = rt.has_missing_items.map({False: "All items delivered", True: "Some items missing"})
-    fig = px.line(rt, x="lateness", y="avg_rating", color="Items", markers=True,
-                  color_discrete_sequence=[BLUE, ORANGE], title="Customer rating vs how late the order was")
-    fig.update_yaxes(range=[1, 5], title="Avg rating"); fig.update_xaxes(title=None)
-    st.plotly_chart(style_fig(fig, 340), width="stretch")
-
-# ----------------------------- Incidents ------------------------------------
-with tabs[3]:
-    st.subheader("Weekly anomaly monitor")
-    st.caption("A store is flagged when its weekly late % is more than 3 standard deviations above its own "
-               "8-week baseline AND worse than the city-wide trend by 10+ points (so rainy weeks that hit "
-               "everyone don't trigger false alarms).")
-    wk = processed("weekly_store_trend")
-    alerts = processed("incident_alerts")
-    focus = st.selectbox("Highlight store", list(store_label), format_func=lambda s: store_label[s],
-                         index=list(store_label).index(alerts.store_id.iloc[0]) if len(alerts) else 0)
-    fig = go.Figure()
-    for sid, g in wk.groupby("store_id"):
-        if sid != focus:
-            fig.add_trace(go.Scatter(x=g.week_start, y=g.late_pct, mode="lines", line=dict(color=GREY, width=1),
-                                     name="Other stores", legendgroup="o", showlegend=False,
-                                     hovertemplate=f"{sid}<br>%{{x|%d %b}}: %{{y:.1f}}%<extra></extra>"))
-    g = wk[wk.store_id == focus]
-    fig.add_trace(go.Scatter(x=g.week_start, y=g.late_pct, mode="lines+markers", line=dict(color=BLUE, width=3),
-                             name=store_label[focus], hovertemplate="%{x|%d %b}: %{y:.1f}% late<extra></extra>"))
-    for a in alerts[alerts.store_id == focus].itertuples():
-        fig.add_vline(x=pd.Timestamp(a.week_start).timestamp() * 1000, line_dash="dot", line_color="#898781",
-                      annotation_text="alert")
-    fig.update_yaxes(title="Late %")
-    st.plotly_chart(style_fig(fig, 420), width="stretch")
-    st.markdown("**Alerts raised**")
-    st.dataframe(alerts[["store_id", "week_start", "late_pct", "baseline_late_pct", "jump_vs_network_pts",
-                         "avg_rider_wait_min", "avg_riders_on_shift"]], hide_index=True, width="stretch")
-    inc = m.get("incident")
-    if inc:
-        st.info(f"**Root cause for {inc['store_id']}:** riders on shift fell from {inc['riders_on_shift_before']} "
-                f"to {inc['riders_on_shift_after']} per hour, so the average rider wait went from "
-                f"{inc['rider_wait_min_before']} to {inc['rider_wait_min_after']} min and the late rate from "
-                f"{inc['late_pct_before']}% to {inc['late_pct_after']}%. Picking and travel times did not change.")
-
-# ----------------------------- Stockouts & baskets --------------------------
-with tabs[4]:
-    a, b = st.columns(2)
-    so = processed("stockouts")
-    so = so[so.store_id.isin(sel_stores)]
-    cat = so.groupby("category", as_index=False).lost_revenue_inr.sum().sort_values("lost_revenue_inr")
-    fig = px.bar(cat, x="lost_revenue_inr", y="category", orientation="h", color_discrete_sequence=[BLUE],
-                 title="Revenue lost to stockouts by category (₹, Jan–Jun)")
-    fig.update_traces(hovertemplate="%{y}: ₹%{x:,.0f}<extra></extra>")
-    fig.update_xaxes(title=None); fig.update_yaxes(title=None)
-    a.plotly_chart(style_fig(fig, 420), width="stretch")
-    top = so.head(12)[["store_id", "product_name", "stockout_pct", "times_unavailable", "lost_revenue_inr"]]
-    b.markdown("**Worst product × store stockouts**")
-    b.dataframe(top, hide_index=True, width="stretch")
-
-    st.subheader("Bundles: items bought together (FP-Growth)")
-    rules = processed("basket_rules")
-    st.dataframe(rules.style.format({"support": "{:.3f}", "confidence": "{:.0%}", "lift": "{:.1f}"}),
-                 hide_index=True, width="stretch")
-    st.caption("Lift = how many times more often the items appear together than by chance. "
-               "Use the top rules for 'frequently bought together' prompts and combo offers.")
-
-# ----------------------------- Expansion ------------------------------------
-with tabs[5]:
-    st.subheader("Where should the next dark store open?")
-    far = query(f"""
-        SELECT c.lat, c.lon, o.distance_km, o.is_late, c.area, o.store_id
-        FROM fact_orders o JOIN dim_customer c USING (customer_id)
-        WHERE o.valid_timing AND {WHERE.replace('store_id', 'o.store_id').replace('order_date', 'o.order_date')}
-        USING SAMPLE 15000 ROWS
-    """)
-    far["Distance"] = far.distance_km.gt(3.5).map({True: "> 3.5 km from store", False: "≤ 3.5 km"})
-    exp = processed("expansion_candidates")
-    fig = px.scatter_map(far, lat="lat", lon="lon", color="Distance", zoom=10.4, height=560,
-                         color_discrete_map={"> 3.5 km from store": ORANGE, "≤ 3.5 km": GREY},
-                         hover_data={"area": True, "store_id": True, "distance_km": ":.1f", "lat": False, "lon": False},
-                         map_style="carto-positron", opacity=0.55)
-    fig.update_traces(marker=dict(size=5))
-    fig.add_trace(go.Scattermap(lat=stores.lat, lon=stores.lon, mode="markers+text", text=stores.store_id,
-                                textposition="top right", marker=dict(size=13, color=BLUE),
-                                name="Existing store", hovertext=stores.store_name, hoverinfo="text"))
-    best = exp.iloc[0]
-    fig.add_trace(go.Scattermap(lat=[best.lat], lon=[best.lon], mode="markers", marker=dict(size=22, color="#0b0b0b"),
-                                name=f"Proposed: near {best.candidate_site_near}", hoverinfo="name"))
-    fig.update_layout(margin=dict(l=0, r=0, t=0, b=0), legend=dict(x=0, y=1, bgcolor="rgba(255,255,255,0.8)"))
-    st.plotly_chart(fig, width="stretch")
-    c = st.columns(4)
-    c[0].metric("Orders/day moved to new store", f"{best.orders_reassigned_per_day:.0f}")
-    c[1].metric("Their avg distance", f"{best.avg_distance_new_km} km", f"{best.avg_distance_new_km - best.avg_distance_now_km:.1f} km", delta_color="inverse")
-    c[2].metric("Their late rate", f"{best.late_pct_new}%", f"{best.late_pct_new - best.late_pct_now:.1f} pts", delta_color="inverse")
-    c[3].metric("Network late rate", f"{best.network_late_pct_new}%", f"{best.network_late_pct_new - best.network_late_pct_now:.2f} pts", delta_color="inverse")
-    st.markdown("**All candidate sites (K-means clusters of orders > 3.5 km away), ranked by network impact**")
-    st.dataframe(exp, hide_index=True, width="stretch")
-    st.caption("Simulation re-routes every order that would be closer to the new site, scales travel time by the "
-               "new distance and re-applies the ETA promise tiers. Picking and rider wait are assumed to match "
-               "today's levels.")
-
-# ----------------------------- Recommendations ------------------------------
-with tabs[6]:
-    s07, s03, s10 = m["whatif_staffing_S07"], m["whatif_staffing_S03"], m["whatif_picking_S10"]
-    ns, ri = m["whatif_new_store_best"], m["revenue_impact"]
-    st.subheader("Five actions, with the simulated impact of each")
-    recs = pd.DataFrame([
-        ["1. Re-hire riders at HSR Layout (S03)", f"+{s03['extra_rider_hours_per_day']} rider-hours/day",
-         f"late {s03['late_pct_now']}% → {s03['late_pct_after_fix']}%"],
-        ["2. Add rider shifts at Whitefield (S07)", f"+{s07['extra_rider_hours_per_day']} rider-hours/day",
-         f"late {s07['late_pct_now']}% → {s07['late_pct_after_fix']}%"],
-        ["3. Fix picking at Electronic City (S10)", f"cut {s10['excess_pick_min']} min of picking per order",
-         f"late {s10['late_pct_now']}% → {s10['late_pct_after_fix']}%"],
-        [f"4. Open a store near {ns['candidate_site_near']}", f"{ns['orders_reassigned_per_day']:.0f} orders/day move over",
-         f"their late rate {ns['late_pct_now']}% → {ns['late_pct_new']}%"],
-        ["5. Bigger freezers + earlier dairy restock", f"₹{ri['stockout_lost_revenue_per_month_inr']/1000:.0f}k/month lost to stockouts today",
-         f"ice cream at S05/S10 alone: ₹{ri['icecream_s05_s10_lost_inr']/1000:.0f}k in 6 months"],
-    ], columns=["Action", "What it takes", "Simulated impact"])
-    st.table(recs)
-    st.markdown(f"""
-**Why it matters:** customers whose first order arrived late were **{ri['repeat_gap_pp']} pts less likely**
-to order again within 30 days ({ri['repeat_30d_late_pct']}% vs {ri['repeat_30d_on_time_pct']}%).
-Every 1,000 late first orders cost about **₹{ri['gmv_lost_per_1000_late_first_orders_inr']/1000:.0f}k**
-in next-month GMV, and {ri['slow_delivery_cancellations_6m']:,} orders were cancelled because delivery was taking too long.
-""")
+st.html('<p style="margin-top:3rem;opacity:.55;font-size:.8rem">Built by Sujal Tyagi. Simulated quick-commerce '
+        'data for 8 Indian metros, January to June 2026.</p>')
