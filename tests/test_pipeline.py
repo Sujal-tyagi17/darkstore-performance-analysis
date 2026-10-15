@@ -72,15 +72,37 @@ def test_items_link_to_orders(con):
     assert orphans == 0
 
 
-def test_scorecard_covers_every_store():
+def test_every_order_has_a_city(con):
+    assert scalar(con, "SELECT count(*) FROM fact_orders WHERE city_code IS NULL") == 0
+
+
+def test_scorecards_cover_every_store_and_city():
     sc = pd.read_csv(PROCESSED / "store_scorecard.csv")
-    assert len(sc) == 12 and sc.late_pct.between(0, 100).all()
+    city = pd.read_csv(PROCESSED / "city_scorecard.csv")
+    assert len(sc) == 52 and sc.late_pct.between(0, 100).all()
+    assert len(city) == 8 and city.orders.sum() == sc.orders.sum()
+
+
+def test_city_adjusted_alerts_find_only_planted_incidents():
+    alerts = pd.read_csv(PROCESSED / "incident_alerts.csv")
+    assert set(alerts.store_id) == {"BLR03", "DEL06"}
+
+
+def test_bottlenecks_match_known_store_problems():
+    b = pd.read_csv(PROCESSED / "delivery_time_breakdown.csv").set_index("store_id").primary_bottleneck
+    assert b["BLR10"] == "Slow picking" and b["MUM05"] == "Slow picking"
+    assert b["BLR07"] == "Rider shortage" and b["BLR03"] == "Rider shortage"
+
+
+def test_action_plan_is_ranked_and_improves_every_case():
+    plan = pd.read_csv(PROCESSED / "action_plan.csv")
+    assert plan.late_avoided_per_day.is_monotonic_decreasing
+    assert (plan.late_pct_after < plan.late_pct_now).all()
 
 
 def test_metrics_have_headline_numbers():
     m = json.loads((REPORTS / "metrics.json").read_text())
-    for key in ["late_pct", "incident", "whatif_staffing_S07", "whatif_picking_S10",
-                "whatif_new_store_best", "revenue_impact"]:
+    for key in ["late_pct", "incidents", "action_plan_top", "expansion_top", "promise_radius", "revenue_impact"]:
         assert key in m
-    assert m["incident"]["store_id"] == "S03"
-    assert m["whatif_new_store_best"]["late_pct_new"] < m["whatif_new_store_best"]["late_pct_now"]
+    assert m["cities"] == 8 and m["stores"] == 52
+    assert m["naive_alert_count"] > m["city_adjusted_alert_count"]

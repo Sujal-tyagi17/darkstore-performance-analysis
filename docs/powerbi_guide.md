@@ -10,17 +10,20 @@ python run_all.py          # builds the warehouse and writes data/powerbi/*.csv
 
 ## 2. Load and model
 
-**Get Data → Text/CSV**, load all seven files from `data/powerbi/`. In **Model view**, create these relationships (single direction, many-to-one):
+**Get Data → Text/CSV**, load all nine files from `data/powerbi/`. In **Model view**, create these relationships (single direction, many-to-one):
 
 | From (many) | To (one) | Column |
 |---|---|---|
 | fact_orders | dim_store | store_id |
+| fact_orders | dim_city | city_code |
+| dim_store | dim_city | city_code (set fact_orders → dim_city as the active path, this one inactive) |
 | fact_orders | dim_customer | customer_id |
 | fact_orders | dim_date | order_date → date |
 | fact_order_items | fact_orders | order_id |
 | fact_order_items | dim_product | sku_id |
 | fact_rider_shifts | dim_store | store_id |
 | fact_rider_shifts | dim_date | date |
+| dim_weather_hour | dim_city | city_code |
 
 Mark `dim_date` as the date table (**Table tools → Mark as date table**). In Power Query, set `valid_timing`, `is_late`, `is_rain` and `fulfilled` to *True/False* type.
 
@@ -52,8 +55,11 @@ Late % =
         CALCULATE ( [Orders], fact_orders[valid_timing] = TRUE () )
     )
 
-Late % vs Network =
-    [Late %] - CALCULATE ( [Late %], REMOVEFILTERS ( dim_store ) )
+Late % vs India =
+    [Late %] - CALCULATE ( [Late %], REMOVEFILTERS ( dim_store ), REMOVEFILTERS ( dim_city ) )
+
+Late % vs City =
+    [Late %] - CALCULATE ( [Late %], REMOVEFILTERS ( dim_store ), VALUES ( dim_city[city_code] ) )
 
 Cancel % = DIVIDE ( CALCULATE ( [Orders], fact_orders[status] = "Cancelled" ), [Orders] )
 
@@ -84,11 +90,11 @@ Late % MoM Change =
 
 | Page | Visuals |
 |---|---|
-| **Overview** | KPI cards (Orders, GMV, Avg Delivery Min, Late %, Cancel %, Avg Rating) · line: Late % by week · column: Orders by month · slicers: date, store |
-| **Store scorecard** | Table: store × all measures, conditional formatting on Late % (red scale) · stacked bar: Avg Pick / Wait / Travel Min by store |
-| **Why late** | Columns: Late % by distance_band, weather, order_hour · scatter: Avg Rider Utilisation vs Late % by store |
-| **Stockouts** | Treemap: Stockout Lost Revenue by category · matrix: product × store with Stockout % |
-| **Map** | Map visual with dim_store lat/lon (bubble = Orders, colour = Late %) |
+| **India** | KPI cards (Orders, GMV, Avg Delivery Min, Late %, Cancel %, Avg Rating), map of dim_city lat/lon (bubble = Orders, colour = Late %), table of cities, slicers for city and month |
+| **City** | Store map (dim_store lat/lon), store table with Late % vs City, line chart of weekly Late % for the city against India |
+| **Store scorecard** | Table: store × all measures with conditional formatting on Late %, stacked bar of Avg Pick / Wait / Travel Min by store |
+| **Why late** | Columns: Late % by distance_band, weather and order_hour; scatter of Avg Rider Utilisation against Late % by store |
+| **Stockouts** | Treemap of Stockout Lost Revenue by category, matrix of product × store with Stockout % |
 
 Colour guidance: one highlight colour (`#2a78d6`) for the stores or bars you want the reader to look at, grey (`#c3c2b7`) for the rest, and an orange sequential scale for Late %.
 
