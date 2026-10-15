@@ -72,6 +72,7 @@ def main() -> None:
     if DB_PATH.exists():
         DB_PATH.unlink()
     con = connect()
+    con.execute("SET threads TO 1")  # single-threaded build: byte-identical outputs on every run
     build_staging(con)
     results = run_analysis_queries(con)
     write_quality_report(con)

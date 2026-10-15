@@ -115,15 +115,15 @@
       "late_pct": 43.0
     },
     {
-      "store_id": "KOL01",
-      "store_name": "DS Salt Lake Sector V",
-      "city_name": "Kolkata",
-      "late_pct": 41.0
-    },
-    {
       "store_id": "DEL09",
       "store_name": "DS Noida Sector 62",
       "city_name": "Delhi NCR",
+      "late_pct": 41.0
+    },
+    {
+      "store_id": "KOL01",
+      "store_name": "DS Salt Lake Sector V",
+      "city_name": "Kolkata",
       "late_pct": 41.0
     }
   ],

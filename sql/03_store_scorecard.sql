@@ -29,4 +29,4 @@ SELECT s.*,
        rank() OVER (PARTITION BY s.city_code ORDER BY s.late_pct)          AS rank_in_city,
        rank() OVER (ORDER BY s.late_pct)                                   AS rank_in_india
 FROM s JOIN city c USING (city_code)
-ORDER BY s.late_pct DESC;
+ORDER BY s.late_pct DESC, s.store_id;
