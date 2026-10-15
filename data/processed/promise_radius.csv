@@ -1,0 +1,9 @@
+city_code,city_name,radius_10min_km,orders_within_radius_pct,travel_min_per_km
+MUM,Mumbai,1.41,31.1,3.44
+BLR,Bengaluru,1.6,43.4,3.2
+HYD,Hyderabad,1.77,52.8,2.84
+KOL,Kolkata,1.83,53.3,3.12
+PUN,Pune,1.89,55.1,2.98
+AMD,Ahmedabad,2.1,64.5,2.64
+DEL,Delhi NCR,2.13,59.8,3.0
+CHE,Chennai,2.49,73.2,2.77

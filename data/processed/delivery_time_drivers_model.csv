@@ -1,19 +1,68 @@
-driver,minutes_added,ci_low,ci_high,p_value
-Each extra km of distance,2.84,2.83,2.86,0.0
-Rain (vs clear),1.82,1.72,1.92,1.8e-281
-Heavy rain (vs clear),2.7,2.58,2.82,0.0
-Peak traffic hour,1.78,1.76,1.81,0.0
-Each +10 pts rider utilisation above 75%,0.68,0.67,0.69,0.0
-Each extra item in the basket,0.4,0.39,0.41,0.0
-Weekend,-0.05,-0.08,-0.03,7.5e-05
-"Store effect S02 (vs Koramangala, all else equal)",0.01,-0.04,0.05,0.82
-"Store effect S03 (vs Koramangala, all else equal)",0.09,0.04,0.14,0.00057
-"Store effect S04 (vs Koramangala, all else equal)",0.12,0.07,0.16,5.7e-07
-"Store effect S05 (vs Koramangala, all else equal)",-0.02,-0.06,0.03,0.46
-"Store effect S06 (vs Koramangala, all else equal)",-0.03,-0.08,0.02,0.21
-"Store effect S07 (vs Koramangala, all else equal)",-0.14,-0.21,-0.08,2.6e-05
-"Store effect S08 (vs Koramangala, all else equal)",-0.02,-0.08,0.04,0.5
-"Store effect S09 (vs Koramangala, all else equal)",-0.03,-0.08,0.02,0.2
-"Store effect S10 (vs Koramangala, all else equal)",2.02,1.96,2.08,0.0
-"Store effect S11 (vs Koramangala, all else equal)",0.02,-0.04,0.08,0.53
-"Store effect S12 (vs Koramangala, all else equal)",-0.06,-0.13,0.01,0.1
+group,driver,minutes_added,ci_low,ci_high,p_value
+Condition,Rain (vs clear),1.89,1.82,1.96,0.0
+Condition,Heavy rain (vs clear),3.09,2.97,3.2,0.0
+Condition,Fog (vs clear),1.84,1.7,1.99,1.1e-137
+Condition,Heatwave (vs clear),0.28,0.19,0.36,5.1e-11
+Condition,Peak traffic hour,1.89,1.88,1.91,0.0
+Condition,Each +10 pts rider utilisation above 75%,0.69,0.68,0.69,0.0
+Condition,Each extra item in the basket,0.41,0.4,0.41,0.0
+Condition,Weekend,-0.1,-0.12,-0.09,2.2e-41
+"Store effect (vs BLR01, all else equal)",AMD01,0.08,-0.02,0.18,0.11
+"Store effect (vs BLR01, all else equal)",AMD02,-0.01,-0.1,0.08,0.82
+"Store effect (vs BLR01, all else equal)",AMD03,-0.03,-0.12,0.05,0.41
+"Store effect (vs BLR01, all else equal)",BLR02,-0.01,-0.06,0.03,0.64
+"Store effect (vs BLR01, all else equal)",BLR03,0.17,0.11,0.22,3.6e-08
+"Store effect (vs BLR01, all else equal)",BLR04,0.06,0.01,0.11,0.016
+"Store effect (vs BLR01, all else equal)",BLR05,-0.0,-0.05,0.04,0.92
+"Store effect (vs BLR01, all else equal)",BLR06,-0.0,-0.05,0.05,0.88
+"Store effect (vs BLR01, all else equal)",BLR07,-0.11,-0.18,-0.04,0.0012
+"Store effect (vs BLR01, all else equal)",BLR08,-0.01,-0.07,0.04,0.69
+"Store effect (vs BLR01, all else equal)",BLR09,-0.02,-0.07,0.03,0.36
+"Store effect (vs BLR01, all else equal)",BLR10,1.93,1.87,1.99,0.0
+"Store effect (vs BLR01, all else equal)",BLR11,0.05,-0.01,0.1,0.083
+"Store effect (vs BLR01, all else equal)",BLR12,-0.07,-0.14,0.0,0.056
+"Store effect (vs BLR01, all else equal)",CHE01,0.07,0.01,0.14,0.026
+"Store effect (vs BLR01, all else equal)",CHE02,0.07,0.01,0.13,0.025
+"Store effect (vs BLR01, all else equal)",CHE03,0.02,-0.04,0.09,0.46
+"Store effect (vs BLR01, all else equal)",CHE04,0.02,-0.06,0.09,0.68
+"Store effect (vs BLR01, all else equal)",CHE05,0.06,-0.02,0.13,0.14
+"Store effect (vs BLR01, all else equal)",DEL01,0.08,0.02,0.13,0.0064
+"Store effect (vs BLR01, all else equal)",DEL02,-0.02,-0.07,0.04,0.59
+"Store effect (vs BLR01, all else equal)",DEL03,0.0,-0.06,0.07,0.95
+"Store effect (vs BLR01, all else equal)",DEL04,0.02,-0.06,0.09,0.7
+"Store effect (vs BLR01, all else equal)",DEL05,-0.02,-0.09,0.06,0.67
+"Store effect (vs BLR01, all else equal)",DEL06,0.19,0.12,0.25,6.8e-08
+"Store effect (vs BLR01, all else equal)",DEL07,0.0,-0.07,0.07,0.98
+"Store effect (vs BLR01, all else equal)",DEL08,0.07,-0.01,0.14,0.07
+"Store effect (vs BLR01, all else equal)",DEL09,0.06,-0.01,0.14,0.11
+"Store effect (vs BLR01, all else equal)",HYD01,0.11,0.04,0.18,0.00099
+"Store effect (vs BLR01, all else equal)",HYD02,-0.07,-0.15,0.01,0.08
+"Store effect (vs BLR01, all else equal)",HYD03,0.03,-0.05,0.1,0.47
+"Store effect (vs BLR01, all else equal)",HYD04,0.02,-0.06,0.1,0.62
+"Store effect (vs BLR01, all else equal)",HYD05,0.05,-0.03,0.12,0.22
+"Store effect (vs BLR01, all else equal)",HYD06,0.03,-0.04,0.11,0.4
+"Store effect (vs BLR01, all else equal)",KOL01,-0.17,-0.3,-0.04,0.0086
+"Store effect (vs BLR01, all else equal)",KOL02,-0.07,-0.16,0.01,0.081
+"Store effect (vs BLR01, all else equal)",KOL03,-0.1,-0.18,-0.03,0.0065
+"Store effect (vs BLR01, all else equal)",KOL04,-0.1,-0.19,-0.02,0.022
+"Store effect (vs BLR01, all else equal)",MUM01,-0.06,-0.13,0.0,0.06
+"Store effect (vs BLR01, all else equal)",MUM02,0.08,0.01,0.15,0.021
+"Store effect (vs BLR01, all else equal)",MUM03,-0.02,-0.08,0.04,0.59
+"Store effect (vs BLR01, all else equal)",MUM04,-0.01,-0.08,0.06,0.76
+"Store effect (vs BLR01, all else equal)",MUM05,1.69,1.62,1.76,0.0
+"Store effect (vs BLR01, all else equal)",MUM06,-0.02,-0.09,0.06,0.65
+"Store effect (vs BLR01, all else equal)",MUM07,-0.04,-0.11,0.04,0.34
+"Store effect (vs BLR01, all else equal)",MUM08,0.1,0.02,0.18,0.019
+"Store effect (vs BLR01, all else equal)",PUN01,-0.03,-0.11,0.04,0.38
+"Store effect (vs BLR01, all else equal)",PUN02,-0.07,-0.14,0.01,0.071
+"Store effect (vs BLR01, all else equal)",PUN03,0.05,-0.04,0.13,0.27
+"Store effect (vs BLR01, all else equal)",PUN04,-0.07,-0.15,0.01,0.071
+"Store effect (vs BLR01, all else equal)",PUN05,0.02,-0.05,0.1,0.56
+Minutes per extra km,Ahmedabad,2.27,2.24,2.3,0.0
+Minutes per extra km,Bengaluru,2.82,2.81,2.83,0.0
+Minutes per extra km,Chennai,2.37,2.36,2.39,0.0
+Minutes per extra km,Delhi NCR,2.69,2.68,2.7,0.0
+Minutes per extra km,Hyderabad,2.5,2.49,2.52,0.0
+Minutes per extra km,Kolkata,2.79,2.76,2.82,0.0
+Minutes per extra km,Mumbai,3.11,3.1,3.13,0.0
+Minutes per extra km,Pune,2.64,2.62,2.66,0.0

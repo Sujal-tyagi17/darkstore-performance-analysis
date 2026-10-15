@@ -1,61 +1,261 @@
-store_id,cancel_reason,cancelled_orders,est_lost_gmv_inr
-S07,Delivery taking too long,307,95474.0
-S03,Delivery taking too long,257,80073.0
-S11,Delivery taking too long,154,47727.0
-S01,Delivery taking too long,152,47560.0
-S08,Delivery taking too long,151,46772.0
-S02,Delivery taking too long,149,46582.0
-S09,Delivery taking too long,142,44605.0
-S06,Delivery taking too long,124,38771.0
-S05,Delivery taking too long,123,38444.0
-S12,Delivery taking too long,123,38316.0
-S05,Changed mind,117,36569.0
-S01,Changed mind,116,36296.0
-S04,Changed mind,113,35030.0
-S10,Delivery taking too long,112,34891.0
-S03,Changed mind,97,30222.0
-S02,Changed mind,94,29387.0
-S04,Payment failed,93,28830.0
-S06,Changed mind,89,27827.0
-S09,Changed mind,72,22616.0
-S01,Payment failed,67,20964.0
-S03,Payment failed,67,20875.0
-S02,Payment failed,66,20634.0
-S08,Changed mind,66,20443.0
-S04,Delivery taking too long,65,20150.0
-S10,Changed mind,59,18380.0
-S05,Payment failed,58,18128.0
-S06,Payment failed,53,16571.0
-S03,Ordered by mistake,51,15890.0
-S04,Ordered by mistake,51,15810.0
-S09,Payment failed,49,15392.0
-S07,Changed mind,48,14928.0
-S06,Ordered by mistake,46,14383.0
-S11,Changed mind,46,14256.0
-S05,Items unavailable,44,13752.0
-S12,Changed mind,43,13395.0
-S02,Ordered by mistake,41,12818.0
-S05,Ordered by mistake,41,12815.0
-S07,Payment failed,40,12440.0
-S01,Ordered by mistake,38,11890.0
-S10,Payment failed,37,11526.0
-S08,Ordered by mistake,34,10531.0
-S08,Payment failed,30,9292.0
-S11,Payment failed,30,9297.0
-S09,Ordered by mistake,27,8481.0
-S10,Ordered by mistake,27,8411.0
-S07,Ordered by mistake,24,7464.0
-S10,Items unavailable,24,7477.0
-S12,Payment failed,23,7165.0
-S11,Ordered by mistake,19,5888.0
-S01,Items unavailable,18,5632.0
-S02,Items unavailable,16,5002.0
-S07,Items unavailable,16,4976.0
-S04,Items unavailable,15,4650.0
-S06,Items unavailable,15,4690.0
-S08,Items unavailable,15,4646.0
-S03,Items unavailable,14,4362.0
-S09,Items unavailable,13,4084.0
-S12,Ordered by mistake,12,3738.0
-S11,Items unavailable,6,1859.0
-S12,Items unavailable,4,1246.0
+store_id,city_code,cancel_reason,cancelled_orders,est_lost_gmv_inr
+BLR07,BLR,Delivery taking too long,324,101781.0
+HYD02,HYD,Delivery taking too long,265,81072.0
+BLR03,BLR,Delivery taking too long,264,84183.0
+CHE02,CHE,Delivery taking too long,190,57386.0
+CHE01,CHE,Delivery taking too long,162,49066.0
+AMD02,AMD,Delivery taking too long,157,46755.0
+MUM04,MUM,Delivery taking too long,151,48704.0
+BLR06,BLR,Delivery taking too long,149,46995.0
+PUN03,PUN,Delivery taking too long,149,46095.0
+BLR01,BLR,Delivery taking too long,148,46543.0
+PUN02,PUN,Delivery taking too long,148,45633.0
+DEL02,DEL,Delivery taking too long,145,45975.0
+DEL07,DEL,Delivery taking too long,145,45931.0
+CHE05,CHE,Delivery taking too long,143,43350.0
+KOL03,KOL,Delivery taking too long,142,42395.0
+BLR02,BLR,Delivery taking too long,140,44044.0
+DEL06,DEL,Delivery taking too long,139,44396.0
+BLR11,BLR,Delivery taking too long,138,43830.0
+HYD01,HYD,Delivery taking too long,138,41734.0
+HYD05,HYD,Delivery taking too long,137,42289.0
+BLR12,BLR,Delivery taking too long,136,43344.0
+HYD06,HYD,Delivery taking too long,135,41055.0
+BLR09,BLR,Delivery taking too long,134,42572.0
+HYD03,HYD,Delivery taking too long,134,41254.0
+MUM03,MUM,Delivery taking too long,134,43689.0
+AMD01,AMD,Delivery taking too long,132,39084.0
+BLR05,BLR,Delivery taking too long,128,40094.0
+KOL01,KOL,Delivery taking too long,126,37136.0
+DEL01,DEL,Changed mind,125,39109.0
+MUM06,MUM,Delivery taking too long,125,40405.0
+PUN01,PUN,Delivery taking too long,124,38517.0
+BLR08,BLR,Delivery taking too long,123,39033.0
+DEL03,DEL,Delivery taking too long,121,37980.0
+BLR04,BLR,Changed mind,120,38206.0
+CHE04,CHE,Delivery taking too long,117,34403.0
+BLR01,BLR,Changed mind,114,35850.0
+DEL01,DEL,Delivery taking too long,112,35042.0
+KOL04,KOL,Delivery taking too long,112,33870.0
+MUM07,MUM,Delivery taking too long,112,36641.0
+CHE03,CHE,Delivery taking too long,110,32865.0
+PUN05,PUN,Delivery taking too long,110,34105.0
+CHE01,CHE,Changed mind,109,33014.0
+HYD04,HYD,Delivery taking too long,108,33421.0
+DEL05,DEL,Delivery taking too long,106,33686.0
+MUM01,MUM,Delivery taking too long,106,34011.0
+BLR04,BLR,Delivery taking too long,105,33430.0
+BLR10,BLR,Delivery taking too long,104,32574.0
+DEL06,DEL,Changed mind,104,33217.0
+BLR05,BLR,Changed mind,103,32263.0
+DEL04,DEL,Delivery taking too long,98,30368.0
+BLR03,BLR,Changed mind,94,29974.0
+DEL02,DEL,Changed mind,92,29170.0
+DEL08,DEL,Delivery taking too long,92,28876.0
+BLR02,BLR,Changed mind,90,28314.0
+KOL02,KOL,Delivery taking too long,90,26925.0
+MUM02,MUM,Delivery taking too long,88,28502.0
+MUM02,MUM,Changed mind,83,26882.0
+BLR06,BLR,Changed mind,81,25548.0
+MUM05,MUM,Delivery taking too long,81,26328.0
+DEL09,DEL,Delivery taking too long,80,25370.0
+MUM08,MUM,Changed mind,76,24702.0
+DEL01,DEL,Payment failed,73,22840.0
+BLR01,BLR,Payment failed,72,22642.0
+CHE02,CHE,Changed mind,72,21746.0
+MUM08,MUM,Delivery taking too long,72,23402.0
+PUN04,PUN,Delivery taking too long,72,22213.0
+BLR04,BLR,Payment failed,71,22605.0
+BLR05,BLR,Payment failed,71,22240.0
+BLR09,BLR,Changed mind,71,22557.0
+HYD01,HYD,Changed mind,70,21170.0
+BLR07,BLR,Changed mind,69,21676.0
+AMD03,AMD,Delivery taking too long,67,19760.0
+PUN05,PUN,Changed mind,67,20773.0
+CHE01,CHE,Payment failed,66,19990.0
+DEL07,DEL,Changed mind,65,20590.0
+PUN01,PUN,Changed mind,65,20190.0
+MUM01,MUM,Changed mind,63,20214.0
+MUM05,MUM,Changed mind,63,20478.0
+DEL09,DEL,Changed mind,61,19345.0
+KOL03,KOL,Changed mind,61,18212.0
+BLR04,BLR,Ordered by mistake,60,19103.0
+BLR02,BLR,Payment failed,59,18561.0
+BLR08,BLR,Changed mind,59,18723.0
+MUM04,MUM,Changed mind,59,19030.0
+MUM07,MUM,Changed mind,59,19302.0
+BLR01,BLR,Ordered by mistake,58,18240.0
+DEL03,DEL,Changed mind,58,18205.0
+MUM03,MUM,Changed mind,56,18258.0
+BLR10,BLR,Changed mind,55,17227.0
+PUN02,PUN,Changed mind,55,16958.0
+BLR03,BLR,Payment failed,54,17219.0
+DEL06,DEL,Payment failed,54,17247.0
+MUM06,MUM,Changed mind,54,17455.0
+CHE05,CHE,Changed mind,52,15763.0
+DEL07,DEL,Payment failed,52,16472.0
+DEL03,DEL,Payment failed,51,16008.0
+BLR11,BLR,Changed mind,50,15880.0
+BLR05,BLR,Ordered by mistake,49,15348.0
+BLR08,BLR,Payment failed,49,15550.0
+CHE02,CHE,Payment failed,49,14799.0
+BLR06,BLR,Payment failed,48,15139.0
+PUN01,PUN,Payment failed,46,14289.0
+DEL08,DEL,Changed mind,45,14124.0
+BLR02,BLR,Ordered by mistake,44,13842.0
+HYD03,HYD,Changed mind,44,13546.0
+AMD02,AMD,Changed mind,43,12805.0
+HYD01,HYD,Payment failed,43,13004.0
+PUN03,PUN,Changed mind,43,13303.0
+DEL02,DEL,Payment failed,42,13317.0
+PUN05,PUN,Payment failed,42,13022.0
+BLR09,BLR,Payment failed,41,13026.0
+DEL01,DEL,Ordered by mistake,41,12828.0
+DEL04,DEL,Changed mind,41,12705.0
+MUM02,MUM,Payment failed,41,13279.0
+HYD01,HYD,Ordered by mistake,40,12097.0
+MUM08,MUM,Payment failed,40,13001.0
+HYD02,HYD,Changed mind,39,11931.0
+BLR06,BLR,Ordered by mistake,38,11985.0
+KOL01,KOL,Changed mind,38,11200.0
+BLR12,BLR,Changed mind,37,11792.0
+HYD05,HYD,Changed mind,37,11421.0
+KOL04,KOL,Changed mind,37,11189.0
+MUM04,MUM,Payment failed,37,11934.0
+CHE01,CHE,Ordered by mistake,36,10904.0
+DEL08,DEL,Payment failed,36,11299.0
+HYD06,HYD,Changed mind,36,10948.0
+KOL03,KOL,Payment failed,36,10748.0
+MUM03,MUM,Payment failed,36,11737.0
+BLR11,BLR,Payment failed,35,11116.0
+DEL06,DEL,Ordered by mistake,35,11179.0
+HYD02,HYD,Payment failed,35,10708.0
+KOL02,KOL,Changed mind,34,10172.0
+MUM08,MUM,Ordered by mistake,34,11051.0
+MUM02,MUM,Ordered by mistake,33,10688.0
+MUM05,MUM,Payment failed,33,10726.0
+MUM06,MUM,Payment failed,33,10667.0
+AMD01,AMD,Changed mind,32,9475.0
+BLR10,BLR,Payment failed,32,10023.0
+CHE05,CHE,Payment failed,32,9701.0
+DEL05,DEL,Changed mind,32,10169.0
+CHE03,CHE,Changed mind,31,9262.0
+MUM07,MUM,Payment failed,31,10142.0
+BLR05,BLR,Items unavailable,30,9397.0
+BLR07,BLR,Payment failed,30,9424.0
+DEL07,DEL,Ordered by mistake,30,9503.0
+MUM01,MUM,Payment failed,30,9626.0
+HYD04,HYD,Changed mind,29,8974.0
+DEL02,DEL,Ordered by mistake,28,8878.0
+BLR08,BLR,Ordered by mistake,27,8568.0
+CHE02,CHE,Ordered by mistake,27,8155.0
+CHE04,CHE,Changed mind,27,7939.0
+DEL09,DEL,Payment failed,27,8562.0
+AMD02,AMD,Payment failed,26,7743.0
+BLR03,BLR,Ordered by mistake,26,8291.0
+DEL03,DEL,Ordered by mistake,26,8161.0
+DEL09,DEL,Ordered by mistake,26,8245.0
+HYD03,HYD,Payment failed,26,8005.0
+KOL01,KOL,Payment failed,26,7663.0
+KOL04,KOL,Payment failed,26,7863.0
+MUM03,MUM,Ordered by mistake,26,8477.0
+CHE03,CHE,Payment failed,25,7469.0
+HYD04,HYD,Ordered by mistake,25,7736.0
+BLR11,BLR,Ordered by mistake,24,7623.0
+HYD04,HYD,Payment failed,24,7427.0
+HYD05,HYD,Payment failed,24,7408.0
+MUM01,MUM,Ordered by mistake,24,7700.0
+MUM06,MUM,Ordered by mistake,24,7758.0
+AMD03,AMD,Changed mind,23,6783.0
+AMD03,AMD,Items unavailable,23,6783.0
+DEL05,DEL,Payment failed,23,7309.0
+HYD06,HYD,Payment failed,22,6690.0
+PUN04,PUN,Changed mind,22,6787.0
+BLR09,BLR,Ordered by mistake,21,6672.0
+BLR10,BLR,Ordered by mistake,21,6577.0
+DEL04,DEL,Payment failed,21,6507.0
+PUN01,PUN,Ordered by mistake,21,6523.0
+BLR12,BLR,Payment failed,20,6374.0
+KOL01,KOL,Ordered by mistake,20,5895.0
+KOL03,KOL,Ordered by mistake,20,5971.0
+MUM07,MUM,Ordered by mistake,20,6543.0
+PUN03,PUN,Payment failed,20,6187.0
+AMD01,AMD,Payment failed,19,5626.0
+DEL08,DEL,Ordered by mistake,19,5964.0
+HYD02,HYD,Ordered by mistake,19,5813.0
+PUN02,PUN,Payment failed,19,5858.0
+PUN05,PUN,Ordered by mistake,19,5891.0
+AMD02,AMD,Ordered by mistake,18,5360.0
+BLR07,BLR,Items unavailable,18,5655.0
+HYD05,HYD,Ordered by mistake,18,5556.0
+HYD06,HYD,Ordered by mistake,18,5474.0
+CHE01,CHE,Items unavailable,17,5149.0
+CHE04,CHE,Ordered by mistake,17,4999.0
+CHE04,CHE,Payment failed,17,4999.0
+KOL02,KOL,Payment failed,17,5086.0
+BLR10,BLR,Items unavailable,16,5011.0
+BLR12,BLR,Ordered by mistake,16,5099.0
+DEL06,DEL,Items unavailable,16,5110.0
+DEL08,DEL,Items unavailable,16,5022.0
+BLR07,BLR,Ordered by mistake,15,4712.0
+CHE03,CHE,Ordered by mistake,15,4482.0
+CHE05,CHE,Ordered by mistake,15,4547.0
+MUM05,MUM,Ordered by mistake,15,4876.0
+PUN02,PUN,Ordered by mistake,15,4625.0
+PUN03,PUN,Items unavailable,15,4640.0
+BLR01,BLR,Items unavailable,14,4403.0
+DEL05,DEL,Ordered by mistake,14,4449.0
+PUN03,PUN,Ordered by mistake,14,4331.0
+AMD03,AMD,Payment failed,13,3834.0
+HYD03,HYD,Ordered by mistake,13,4002.0
+MUM08,MUM,Items unavailable,13,4225.0
+PUN04,PUN,Ordered by mistake,13,4011.0
+BLR04,BLR,Items unavailable,12,3821.0
+CHE05,CHE,Items unavailable,12,3638.0
+DEL01,DEL,Items unavailable,12,3754.0
+MUM04,MUM,Ordered by mistake,12,3871.0
+BLR02,BLR,Items unavailable,11,3461.0
+CHE03,CHE,Items unavailable,11,3287.0
+HYD01,HYD,Items unavailable,11,3327.0
+HYD02,HYD,Items unavailable,11,3365.0
+MUM01,MUM,Items unavailable,11,3529.0
+PUN02,PUN,Items unavailable,11,3392.0
+AMD01,AMD,Ordered by mistake,10,2961.0
+CHE02,CHE,Items unavailable,10,3020.0
+HYD03,HYD,Items unavailable,10,3079.0
+KOL02,KOL,Ordered by mistake,10,2992.0
+KOL03,KOL,Items unavailable,10,2986.0
+KOL04,KOL,Ordered by mistake,10,3024.0
+MUM03,MUM,Items unavailable,10,3260.0
+MUM05,MUM,Items unavailable,10,3250.0
+PUN04,PUN,Payment failed,10,3085.0
+PUN05,PUN,Items unavailable,10,3100.0
+BLR03,BLR,Items unavailable,9,2870.0
+BLR12,BLR,Items unavailable,9,2868.0
+HYD05,HYD,Items unavailable,9,2778.0
+AMD01,AMD,Items unavailable,8,2369.0
+AMD02,AMD,Items unavailable,8,2382.0
+AMD03,AMD,Ordered by mistake,8,2359.0
+BLR06,BLR,Items unavailable,8,2523.0
+BLR09,BLR,Items unavailable,8,2542.0
+DEL04,DEL,Ordered by mistake,8,2479.0
+MUM02,MUM,Items unavailable,8,2591.0
+PUN01,PUN,Items unavailable,8,2485.0
+BLR08,BLR,Items unavailable,7,2221.0
+BLR11,BLR,Items unavailable,7,2223.0
+CHE04,CHE,Items unavailable,7,2058.0
+DEL03,DEL,Items unavailable,7,2197.0
+DEL04,DEL,Items unavailable,7,2169.0
+HYD04,HYD,Items unavailable,7,2166.0
+MUM04,MUM,Items unavailable,7,2258.0
+KOL02,KOL,Items unavailable,6,1795.0
+KOL04,KOL,Items unavailable,6,1814.0
+MUM06,MUM,Items unavailable,6,1939.0
+DEL02,DEL,Items unavailable,5,1585.0
+DEL05,DEL,Items unavailable,5,1589.0
+DEL07,DEL,Items unavailable,5,1584.0
+DEL09,DEL,Items unavailable,5,1586.0
+KOL01,KOL,Items unavailable,5,1474.0
+HYD06,HYD,Items unavailable,4,1216.0
+MUM07,MUM,Items unavailable,3,981.0
+PUN04,PUN,Items unavailable,2,617.0

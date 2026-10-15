@@ -14,12 +14,13 @@ from build_warehouse import ROOT, connect
 OUT = ROOT / "data" / "powerbi"
 
 TABLES = {
+    "dim_city": "SELECT * FROM dim_city",
     "dim_store": "SELECT * FROM dim_store",
     "dim_product": "SELECT * FROM dim_product",
     "dim_customer": "SELECT * FROM dim_customer",
     "dim_date": "SELECT * FROM dim_date",
     "fact_orders": """
-        SELECT order_id, customer_id, store_id, order_date, order_hour, order_ts, status, cancel_reason,
+        SELECT order_id, customer_id, store_id, city_code, order_date, order_hour, order_ts, status, cancel_reason,
                promised_eta_min, distance_km, distance_band, weather, is_rain, riders_on_shift,
                rider_utilization, item_lines, items_missing, item_total, discount, delivery_fee,
                small_cart_fee, order_value, payment_method, rating,
@@ -29,10 +30,11 @@ TABLES = {
         FROM fact_orders
     """,
     "fact_order_items": """
-        SELECT order_id, line_no, sku_id, store_id, order_date, quantity, unit_price, line_value, fulfilled
+        SELECT order_id, line_no, sku_id, store_id, city_code, order_date, quantity, unit_price, line_value, fulfilled
         FROM fact_order_items
     """,
     "fact_rider_shifts": "SELECT * FROM fact_rider_shifts",
+    "dim_weather_hour": "SELECT * FROM dim_weather_hour",
 }
 
 

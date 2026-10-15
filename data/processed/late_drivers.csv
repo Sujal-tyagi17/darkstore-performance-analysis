@@ -1,18 +1,163 @@
-driver,level,orders,late_pct,avg_delivery_min
-Distance,0-1 km,22787,12.4,7.52
-Distance,1-2 km,41926,20.9,9.62
-Distance,2-3 km,23674,28.6,12.33
-Distance,3-4 km,12051,31.2,15.24
-Distance,4+ km,10101,59.5,19.74
-Rider utilisation,1. <60%,32680,12.7,10.06
-Rider utilisation,2. 60-90%,27048,14.9,10.34
-Rider utilisation,3. 90-120%,30063,20.4,10.74
-Rider utilisation,4. >120%,20748,66.6,15.34
-Time of day,1. Morning (6-11),25264,29.7,11.79
-Time of day,2. Afternoon (11-17),25692,19.9,10.69
-Time of day,3. Evening peak (17-22),46227,29.4,11.74
-Time of day,4. Late night (22-6),13356,14.2,10.08
-Weather,Clear,77291,23.5,11.11
-Weather,Cloudy,27094,23.3,11.17
-Weather,Heavy Rain,2868,63.0,14.71
-Weather,Rain,3286,55.2,13.89
+city_code,driver,level,orders,late_pct,avg_delivery_min
+AMD,Distance,0-1 km,3738,13.5,7.39
+AMD,Distance,1-2 km,4869,18.1,9.05
+AMD,Distance,2-3 km,1703,19.4,11.46
+AMD,Distance,3-4 km,1445,16.1,13.86
+AMD,Distance,4+ km,1969,42.0,18.0
+AMD,Rider utilisation,1. <60%,4307,4.6,8.6
+AMD,Rider utilisation,2. 60-90%,1338,8.2,9.84
+AMD,Rider utilisation,3. 90-120%,4389,8.0,9.51
+AMD,Rider utilisation,4. >120%,3690,57.3,14.83
+AMD,Time of day,1. Morning (6-11),3177,23.9,11.16
+AMD,Time of day,2. Afternoon (11-17),3194,14.2,9.71
+AMD,Time of day,3. Evening peak (17-22),5655,23.9,11.31
+AMD,Time of day,4. Late night (22-6),1698,12.2,9.56
+AMD,Weather,1. Clear,9527,20.0,10.58
+AMD,Weather,2. Cloudy,3397,18.1,10.52
+AMD,Weather,4. Heatwave,631,25.8,11.37
+AMD,Weather,5. Rain,66,36.4,13.13
+AMD,Weather,6. Heavy Rain,103,63.1,20.39
+BLR,Distance,0-1 km,22210,13.0,7.59
+BLR,Distance,1-2 km,42631,21.5,9.79
+BLR,Distance,2-3 km,23516,28.2,12.32
+BLR,Distance,3-4 km,12210,31.9,15.36
+BLR,Distance,4+ km,10407,58.8,19.73
+BLR,Rider utilisation,1. <60%,32383,12.8,10.14
+BLR,Rider utilisation,2. 60-90%,26963,15.1,10.36
+BLR,Rider utilisation,3. 90-120%,30968,20.8,10.86
+BLR,Rider utilisation,4. >120%,20660,68.0,15.73
+BLR,Time of day,1. Morning (6-11),25441,30.4,11.94
+BLR,Time of day,2. Afternoon (11-17),25887,20.6,10.89
+BLR,Time of day,3. Evening peak (17-22),46282,29.6,11.81
+BLR,Time of day,4. Late night (22-6),13364,14.4,10.22
+BLR,Weather,1. Clear,78718,23.9,11.26
+BLR,Weather,2. Cloudy,26825,24.4,11.27
+BLR,Weather,5. Rain,4145,56.9,14.13
+BLR,Weather,6. Heavy Rain,1286,75.7,16.76
+CHE,Distance,0-1 km,10593,10.8,7.08
+CHE,Distance,1-2 km,12866,15.5,8.82
+CHE,Distance,2-3 km,4017,17.2,11.19
+CHE,Distance,3-4 km,2480,12.3,13.56
+CHE,Distance,4+ km,5319,42.6,17.96
+CHE,Rider utilisation,1. <60%,10291,6.4,8.82
+CHE,Rider utilisation,2. 60-90%,7050,7.9,9.58
+CHE,Rider utilisation,3. 90-120%,10378,10.3,9.64
+CHE,Rider utilisation,4. >120%,7556,54.4,13.79
+CHE,Time of day,1. Morning (6-11),8092,22.8,10.84
+CHE,Time of day,2. Afternoon (11-17),8250,16.1,9.8
+CHE,Time of day,3. Evening peak (17-22),14607,18.8,10.54
+CHE,Time of day,4. Late night (22-6),4326,11.3,9.26
+CHE,Weather,1. Clear,25856,17.5,10.17
+CHE,Weather,2. Cloudy,8576,17.8,10.3
+CHE,Weather,4. Heatwave,391,26.9,11.04
+CHE,Weather,5. Rain,259,47.5,13.02
+CHE,Weather,6. Heavy Rain,193,64.8,17.96
+DEL,Distance,0-1 km,16675,9.5,7.1
+DEL,Distance,1-2 km,22367,16.8,9.14
+DEL,Distance,2-3 km,7432,22.9,11.77
+DEL,Distance,3-4 km,4787,22.6,14.7
+DEL,Distance,4+ km,16558,67.8,21.06
+DEL,Rider utilisation,1. <60%,23031,19.1,11.23
+DEL,Rider utilisation,2. 60-90%,15396,22.0,11.68
+DEL,Rider utilisation,3. 90-120%,18151,23.4,11.66
+DEL,Rider utilisation,4. >120%,11241,65.3,15.93
+DEL,Time of day,1. Morning (6-11),15461,34.0,12.88
+DEL,Time of day,2. Afternoon (11-17),15823,24.1,11.49
+DEL,Time of day,3. Evening peak (17-22),28229,31.1,12.68
+DEL,Time of day,4. Late night (22-6),8306,18.2,10.89
+DEL,Weather,1. Clear,45974,27.1,12.06
+DEL,Weather,2. Cloudy,16733,27.2,12.07
+DEL,Weather,3. Fog,1648,45.1,14.52
+DEL,Weather,4. Heatwave,2000,38.5,13.0
+DEL,Weather,5. Rain,944,48.8,14.41
+DEL,Weather,6. Heavy Rain,520,71.0,17.41
+HYD,Distance,0-1 km,9498,14.8,7.64
+HYD,Distance,1-2 km,12610,20.1,9.38
+HYD,Distance,2-3 km,3333,25.7,11.97
+HYD,Distance,3-4 km,4461,21.4,14.87
+HYD,Distance,4+ km,8302,46.0,18.3
+HYD,Rider utilisation,1. <60%,11352,9.8,10.09
+HYD,Rider utilisation,2. 60-90%,5873,14.2,10.91
+HYD,Rider utilisation,3. 90-120%,11294,14.0,10.65
+HYD,Rider utilisation,4. >120%,9685,62.4,15.51
+HYD,Time of day,1. Morning (6-11),8711,31.1,12.56
+HYD,Time of day,2. Afternoon (11-17),8931,19.2,10.93
+HYD,Time of day,3. Evening peak (17-22),15836,27.9,12.12
+HYD,Time of day,4. Late night (22-6),4726,15.2,10.58
+HYD,Weather,1. Clear,26647,23.8,11.64
+HYD,Weather,2. Cloudy,9550,24.5,11.64
+HYD,Weather,4. Heatwave,1027,31.6,12.57
+HYD,Weather,5. Rain,714,52.8,14.65
+HYD,Weather,6. Heavy Rain,266,66.5,16.22
+IN,Distance,0-1 km,84931,12.4,7.43
+IN,Distance,1-2 km,130078,20.7,9.53
+IN,Distance,2-3 km,57717,28.4,12.28
+IN,Distance,3-4 km,38057,28.2,15.14
+IN,Distance,4+ km,61893,60.1,20.06
+IN,Rider utilisation,1. <60%,117260,15.4,10.58
+IN,Rider utilisation,2. 60-90%,76457,18.6,11.05
+IN,Rider utilisation,3. 90-120%,105390,20.3,11.04
+IN,Rider utilisation,4. >120%,73569,65.3,15.6
+IN,Time of day,1. Morning (6-11),85214,32.4,12.39
+IN,Time of day,2. Afternoon (11-17),86768,21.8,11.1
+IN,Time of day,3. Evening peak (17-22),155251,30.9,12.24
+IN,Time of day,4. Late night (22-6),45443,16.1,10.51
+IN,Weather,1. Clear,262791,25.8,11.62
+IN,Weather,2. Cloudy,90209,25.8,11.64
+IN,Weather,3. Fog,1648,45.1,14.52
+IN,Weather,4. Heatwave,4434,33.2,12.43
+IN,Weather,5. Rain,8263,55.8,14.53
+IN,Weather,6. Heavy Rain,5331,74.0,17.51
+KOL,Distance,0-1 km,5311,12.8,7.37
+KOL,Distance,1-2 km,6045,20.8,9.52
+KOL,Distance,2-3 km,2572,26.4,12.24
+KOL,Distance,3-4 km,2182,28.1,15.27
+KOL,Distance,4+ km,3917,55.1,19.49
+KOL,Rider utilisation,1. <60%,6398,12.0,10.26
+KOL,Rider utilisation,2. 60-90%,2481,16.5,10.99
+KOL,Rider utilisation,3. 90-120%,6391,17.3,10.9
+KOL,Rider utilisation,4. >120%,4757,65.4,15.82
+KOL,Time of day,1. Morning (6-11),4580,31.1,12.28
+KOL,Time of day,2. Afternoon (11-17),4649,17.5,10.74
+KOL,Time of day,3. Evening peak (17-22),8408,33.4,12.7
+KOL,Time of day,4. Late night (22-6),2390,14.4,10.43
+KOL,Weather,1. Clear,13859,25.1,11.65
+KOL,Weather,2. Cloudy,4780,23.4,11.47
+KOL,Weather,4. Heatwave,264,28.4,12.08
+KOL,Weather,5. Rain,690,58.8,15.33
+KOL,Weather,6. Heavy Rain,434,72.1,17.87
+MUM,Distance,0-1 km,9657,13.9,7.8
+MUM,Distance,1-2 km,19902,28.1,10.21
+MUM,Distance,2-3 km,11819,39.9,13.14
+MUM,Distance,3-4 km,7103,40.2,16.09
+MUM,Distance,4+ km,10129,74.1,21.7
+MUM,Rider utilisation,1. <60%,20427,27.1,12.26
+MUM,Rider utilisation,2. 60-90%,13017,31.3,12.63
+MUM,Rider utilisation,3. 90-120%,15451,33.2,12.43
+MUM,Rider utilisation,4. >120%,9715,74.6,16.56
+MUM,Time of day,1. Morning (6-11),13431,44.3,13.75
+MUM,Time of day,2. Afternoon (11-17),13506,30.0,12.48
+MUM,Time of day,3. Evening peak (17-22),24402,42.7,13.54
+MUM,Time of day,4. Late night (22-6),7271,21.6,11.56
+MUM,Weather,1. Clear,42047,35.8,12.88
+MUM,Weather,2. Cloudy,13816,35.6,12.91
+MUM,Weather,5. Rain,685,67.0,16.48
+MUM,Weather,6. Heavy Rain,2062,76.5,17.78
+PUN,Distance,0-1 km,7249,13.5,7.46
+PUN,Distance,1-2 km,8788,19.7,9.3
+PUN,Distance,2-3 km,3325,23.8,12.17
+PUN,Distance,3-4 km,3389,24.1,14.94
+PUN,Distance,4+ km,5292,61.5,20.51
+PUN,Rider utilisation,1. <60%,9071,13.5,10.47
+PUN,Rider utilisation,2. 60-90%,4339,18.3,11.46
+PUN,Rider utilisation,3. 90-120%,8368,18.0,11.01
+PUN,Rider utilisation,4. >120%,6265,64.5,15.73
+PUN,Time of day,1. Morning (6-11),6321,31.1,12.58
+PUN,Time of day,2. Afternoon (11-17),6528,21.3,10.98
+PUN,Time of day,3. Evening peak (17-22),11832,30.9,12.58
+PUN,Time of day,4. Late night (22-6),3362,16.7,10.51
+PUN,Weather,1. Clear,20163,25.5,11.76
+PUN,Weather,2. Cloudy,6532,25.3,11.8
+PUN,Weather,4. Heatwave,121,29.8,12.6
+PUN,Weather,5. Rain,760,53.0,14.93
+PUN,Weather,6. Heavy Rain,467,73.2,18.04

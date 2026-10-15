@@ -1,0 +1,22 @@
+priority,type,city_name,where,store_id,problem,action,effort,orders_per_day,late_pct_now,late_pct_after,avg_delivery_now,avg_delivery_after,late_avoided_per_day
+1,Riders,Bengaluru,HSR Layout (BLR03),BLR03,Rider capacity fell from 2026-05-18 (ongoing incident),Restore rider capacity: re-hire and add incentive shifts,"+22.3 rider-hours/day (biggest gaps at 18:00, 19:00, 20:00, 21:00)",62.4,60.5,13.1,16.12,9.57,29.6
+2,New store,Delhi NCR,New site near Sohna Road,DEL06,19 orders/day travel 6.2 km on average,Open a dark store near Sohna Road,1 new site (capex + ~3 months to launch),18.7,78.7,16.4,21.99,11.16,11.7
+3,Riders,Bengaluru,Whitefield (BLR07),BLR07,Orders wait 3.3 min for a rider (India avg 1.8),Add rider shifts at peak hours,"+12.3 rider-hours/day (biggest gaps at 9:00, 10:00, 18:00, 20:00)",47.2,40.0,15.7,14.11,11.4,11.4
+4,New store,Bengaluru,New site near Kasavanahalli,BLR04,32 orders/day travel 4.7 km on average,Open a dark store near Kasavanahalli,1 new site (capex + ~3 months to launch),32.3,47.4,13.8,17.91,9.23,10.9
+5,Riders,Hyderabad,Madhapur (HYD02),HYD02,Orders wait 3.3 min for a rider (India avg 1.8),Add rider shifts at peak hours,"+10.9 rider-hours/day (biggest gaps at 9:00, 10:00, 21:00, 22:00)",38.2,28.8,3.8,11.86,9.14,9.6
+6,New store,Mumbai,New site near Ghodbunder Road,MUM08,13 orders/day travel 6.0 km on average,Open a dark store near Ghodbunder Road,1 new site (capex + ~3 months to launch),13.2,85.5,15.3,23.57,8.88,9.2
+7,Picking,Bengaluru,Electronic City (BLR10),BLR10,Picking takes 4.8 min (India avg 2.8),"Re-slot fast movers near packing, audit layout","cut picking from 4.8 to 2.8 min/order (layout, slotting)",37.3,43.0,19.7,12.63,10.68,8.7
+8,New store,Delhi NCR,New site near Noida Extension,DEL09,12 orders/day travel 6.6 km on average,Open a dark store near Noida Extension,1 new site (capex + ~3 months to launch),12.1,85.0,13.2,22.94,8.09,8.7
+9,Picking,Mumbai,Dadar (MUM05),MUM05,Picking takes 4.5 min (India avg 2.9),"Re-slot fast movers near packing, audit layout","cut picking from 4.5 to 2.8 min/order (layout, slotting)",34.9,48.7,24.4,12.3,10.62,8.5
+10,New store,Mumbai,New site near Bhandup West,MUM02,12 orders/day travel 6.3 km on average,Open a dark store near Bhandup West,1 new site (capex + ~3 months to launch),11.8,91.1,26.9,24.53,11.76,7.6
+11,New store,Hyderabad,New site near Financial District,HYD01,26 orders/day travel 4.8 km on average,Open a dark store near Financial District,1 new site (capex + ~3 months to launch),26.3,41.3,13.2,17.29,9.01,7.4
+12,New store,Chennai,New site near Sholinganallur,CHE05,12 orders/day travel 6.1 km on average,Open a dark store near Sholinganallur,1 new site (capex + ~3 months to launch),11.9,61.9,13.3,19.79,8.01,5.8
+13,New store,Pune,New site near Wagholi,PUN05,6 orders/day travel 7.7 km on average,Open a dark store near Wagholi,1 new site (capex + ~3 months to launch),6.5,94.1,13.2,25.47,8.01,5.3
+14,New store,Pune,New site near Hadapsar,PUN01,8 orders/day travel 6.1 km on average,Open a dark store near Hadapsar,1 new site (capex + ~3 months to launch),8.3,74.6,14.2,21.28,8.39,5.0
+15,New store,Kolkata,New site near New Town,KOL01,10 orders/day travel 5.4 km on average,Open a dark store near New Town,1 new site (capex + ~3 months to launch),10.5,65.0,17.6,20.54,8.64,5.0
+16,New store,Bengaluru,New site near Begur,BLR03,8 orders/day travel 5.6 km on average,Open a dark store near Begur,1 new site (capex + ~3 months to launch),8.2,73.6,19.4,21.62,9.12,4.5
+17,Riders,Ahmedabad,Navrangpura (AMD01),AMD01,Orders wait 2.6 min for a rider (India avg 1.8),Add rider shifts at peak hours,"+6.6 rider-hours/day (biggest gaps at 9:00, 10:00, 17:00, 22:00)",25.8,18.7,2.6,11.06,9.01,4.1
+18,New store,Hyderabad,New site near Secunderabad,HYD05,16 orders/day travel 4.7 km on average,Open a dark store near Secunderabad,1 new site (capex + ~3 months to launch),16.5,36.7,14.2,17.2,8.17,3.7
+19,New store,Chennai,New site near Mylapore,CHE01,18 orders/day travel 4.7 km on average,Open a dark store near Mylapore,1 new site (capex + ~3 months to launch),18.5,28.0,11.6,16.39,7.97,3.0
+20,New store,Kolkata,New site near Tollygunge,KOL04,11 orders/day travel 4.5 km on average,Open a dark store near Tollygunge,1 new site (capex + ~3 months to launch),11.0,43.3,17.6,18.02,8.58,2.8
+21,New store,Ahmedabad,New site near Bopal,AMD02,8 orders/day travel 5.7 km on average,Open a dark store near Bopal,1 new site (capex + ~3 months to launch),7.7,50.1,16.8,18.84,8.23,2.6

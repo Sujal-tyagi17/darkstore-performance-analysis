@@ -33,6 +33,8 @@ def build_staging(con: duckdb.DuckDBPyConnection) -> None:
 
 def run_analysis_queries(con: duckdb.DuckDBPyConnection) -> dict[str, int]:
     PROCESSED.mkdir(parents=True, exist_ok=True)
+    for old in PROCESSED.glob("*.csv"):     # start clean so no stale outputs linger
+        old.unlink()
     results = {}
     for path in sorted(SQL_DIR.glob("[0-9][0-9]_*.sql")):
         if path.name.startswith("00_"):

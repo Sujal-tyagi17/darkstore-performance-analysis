@@ -1,0 +1,9 @@
+city_code,city_name,state,lat,lon,road_factor
+BLR,Bengaluru,Karnataka,12.9716,77.5946,1.32
+MUM,Mumbai,Maharashtra,19.076,72.8777,1.42
+DEL,Delhi NCR,Delhi / Haryana / UP,28.6139,77.209,1.3
+HYD,Hyderabad,Telangana,17.385,78.4867,1.3
+PUN,Pune,Maharashtra,18.5204,73.8567,1.32
+CHE,Chennai,Tamil Nadu,13.0827,80.2707,1.28
+KOL,Kolkata,West Bengal,22.5726,88.3639,1.3
+AMD,Ahmedabad,Gujarat,23.0225,72.5714,1.28
