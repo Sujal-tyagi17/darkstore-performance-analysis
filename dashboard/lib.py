@@ -50,7 +50,7 @@ def colors() -> dict:
 def connection() -> duckdb.DuckDBPyConnection:
     if not DB_PATH.exists():
         import build_warehouse
-        build_warehouse.main()
+        build_warehouse.build_database()
     return duckdb.connect(str(DB_PATH), read_only=True)
 
 

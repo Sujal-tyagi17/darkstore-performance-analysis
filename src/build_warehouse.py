@@ -68,6 +68,21 @@ def write_quality_report(con: duckdb.DuckDBPyConnection) -> None:
     (REPORTS / "data_quality.md").write_text("\n".join(lines) + "\n")
 
 
+def build_database() -> None:
+    """Build only the DuckDB warehouse (used by the dashboard on first load).
+
+    Leaves data/processed untouched, so the committed analysis outputs stay in place.
+    """
+    tmp = DB_PATH.with_suffix(".building")
+    if tmp.exists():
+        tmp.unlink()
+    con = duckdb.connect(str(tmp))
+    con.execute("SET threads TO 1")
+    build_staging(con)
+    con.close()
+    tmp.replace(DB_PATH)
+
+
 def main() -> None:
     if DB_PATH.exists():
         DB_PATH.unlink()
